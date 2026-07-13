@@ -1,389 +1,563 @@
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
-	<title>Osman Safi | Software Engineer</title>
+	<title>Osman Safi | Systems, Automation, and Software</title>
 	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="description" content="Osman Safi builds practical software, automation, and internal tools that help teams work more reliably at scale." />
 	<link rel="stylesheet" href="assets/css/main.css" />
 </head>
 <body>
 
-<!-- Nav -->
-<nav id="nav">
-	<div class="wrapper">
-		<span class="brand">Osman Safi</span>
-		<ul>
-			<li><a href="https://www.linkedin.com/in/osman-safi-097a35204/" class="icon-link">LinkedIn</a></li>
-			<li><a href="https://github.com/OsmanSafi" class="icon-link">GitHub</a></li>
-			<li><a href="mailto:osmansafi1027@gmail.com" class="button">Get in touch</a></li>
-		</ul>
-	</div>
-</nav>
+<header id="site-header">
+	<div class="shell header-inner">
+		<a class="identity" href="#top" aria-label="Osman Safi home">
+			<span class="identity-mark">OS</span>
+			<span class="identity-copy">
+				<strong>Osman Safi</strong>
+				<small>Systems · Automation · Software</small>
+			</span>
+		</a>
 
-<!-- Intro -->
-<div id="intro">
-	<canvas id="hero-network"></canvas>
-	<div class="wrapper">
-		<div class="intro-grid">
-			<div class="intro-copy">
-				<p class="eyebrow">IT Systems Analyst &amp; Automation Developer</p>
-				<h1>Osman Safi</h1>
-				<p class="summary">
-					I'm a software engineer coming out of enterprise IT, where I spent my career
-					building the automation and tooling that keep large device fleets and
-					identity systems reliable. I'm now looking for remote software engineering
-					or senior IT roles — government or private sector — where I can keep doing
-					hands-on technical work.
+		<nav aria-label="Primary navigation">
+			<a href="#work">Work</a>
+			<a href="#experience">Experience</a>
+			<a href="#about">About</a>
+			<a href="https://github.com/OsmanSafi">GitHub</a>
+			<a class="nav-contact" href="mailto:osmansafi1027@gmail.com">Contact</a>
+		</nav>
+	</div>
+</header>
+
+<main id="top">
+
+	<section class="hero">
+		<canvas id="hero-network" aria-hidden="true"></canvas>
+
+		<div class="shell hero-grid">
+			<div class="hero-copy">
+				<p class="kicker">
+					<span class="status-dot"></span>
+					Building systems people can depend on
 				</p>
-				<div class="actions">
-					<a href="mailto:osmansafi1027@gmail.com" class="cta primary">Get in touch</a>
-					<a href="https://github.com/OsmanSafi" class="cta secondary">View GitHub</a>
+
+				<h1>I turn recurring technical problems into tools that keep working.</h1>
+
+				<p class="hero-lead">
+					I started in enterprise IT, close to the people, devices, and processes that keep an organization moving.
+					That experience shaped how I build software: practical, maintainable, and focused on making the next person's job easier.
+				</p>
+
+				<p class="hero-goal">
+					I want to grow with a team, learn the business deeply, take on larger problems over time, and become someone the organization trusts with its most important work.
+				</p>
+
+				<div class="hero-actions">
+					<a class="button primary" href="#work">See my work</a>
+					<a class="button ghost" href="mailto:osmansafi1027@gmail.com">Start a conversation</a>
+				</div>
+
+				<div class="signal-row" aria-label="Professional focus">
+					<span>Enterprise automation</span>
+					<span>Internal tooling</span>
+					<span>Systems reliability</span>
+					<span>Application development</span>
 				</div>
 			</div>
-			<div class="intro-art">
-				<div class="model-card">
-					<div id="hero-model" aria-label="Interactive 3D cybernetic software engineer model"></div>
-					<p class="model-note">Drag to rotate · Auto-rendered with Three.js</p>
+
+			<div class="hero-visual">
+				<div class="visual-frame">
+					<div class="frame-topline">
+						<span>PROFILE / OSMAN-SAFI</span>
+						<span class="frame-state">ACTIVE</span>
+					</div>
+
+					<div
+						id="hero-model"
+						aria-label="Interactive 3D portfolio character">
+					</div>
+
+					<div class="frame-footer">
+						<span>MONTEREY, CA</span>
+						<span>DRAG TO ROTATE</span>
+					</div>
 				</div>
 			</div>
 		</div>
+	</section>
 
-		<div class="career-strip">
-			<p class="label">Career trajectory</p>
-			<div class="track">
-				<div class="stage">
-					<div class="dot"></div>
-					<div class="stage-title">IT Systems Administration</div>
-					<div class="stage-sub">Desktop support &amp; device fleet management</div>
-				</div>
-				<div class="stage">
-					<div class="dot"></div>
-					<div class="stage-title">Automation Development</div>
-					<div class="stage-sub">County of Monterey ITD</div>
-				</div>
-				<div class="stage current">
-					<div class="dot"></div>
-					<div class="stage-title">Software Engineering</div>
-					<div class="stage-sub">M.S. Software Engineering, CSU Fullerton, 2026</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
-<!-- About -->
-<section class="block" id="about">
-	<div class="wrapper">
-		<p class="eyebrow">About</p>
-		<h2 class="title">Background</h2>
-		<div class="about-grid">
+	<section class="section intro-statement" id="about">
+		<div class="shell split-heading">
 			<div>
-				<p>
-					My career started in traditional IT systems administration, and over time I moved
-					toward building the software that makes IT operations scale — automation scripts,
-					internal tooling, and validation platforms that replace manual checklists with
-					reliable, repeatable systems.
-				</p>
-				<p>
-					That shift is what led me to complete an M.S. in Software Engineering at CSU Fullerton,
-					on top of my existing B.S. in Computer Science from CSU Monterey Bay. My flagship project,
-					DesktopSupportQC, grew out of that pivot — it's a real production tool I designed and
-					deployed to automate workstation validation across Monterey County's IT department.
-				</p>
-				<p>
-					I'm most effective in hands-on technical roles rather than pure management, and I'm
-					actively looking for remote software engineering or senior IT/automation positions
-					in government or private sector.
-				</p>
+				<p class="section-index">01 / APPROACH</p>
+				<h2>I build from the work outward.</h2>
 			</div>
-			<dl class="about-facts">
-				<dt>Location</dt>
-				<dd>Monterey, California</dd>
-				<dt>Education</dt>
-				<dd>M.S. Software Engineering — CSU Fullerton (2026)<br />B.S. Computer Science — CSU Monterey Bay</dd>
-				<dt>Currently</dt>
-				<dd>IT Systems Analyst / Automation Developer, County of Monterey IT Department</dd>
-				<dt>Looking for</dt>
-				<dd>Remote Software Engineering or Senior IT roles</dd>
-			</dl>
-		</div>
-	</div>
-</section>
 
-<!-- Experience -->
-<section class="block" id="experience">
-	<div class="wrapper">
-		<p class="eyebrow">Experience</p>
-		<h2 class="title">Where I've worked</h2>
+			<div class="statement-copy">
+				<p>
+					My best projects have not started with a trend or a technology. They started with a process that was slow, inconsistent, or too dependent on manual effort.
+				</p>
 
-		<div class="exp-item">
-			<div class="exp-when">Current</div>
-			<div>
-				<p class="exp-role">IT Systems Analyst / Automation Developer</p>
-				<p class="exp-org">County of Monterey Information Technology Department</p>
-				<ul>
-					<li>Designed and deployed DesktopSupportQC, a .NET 8/WPF platform automating 30+ post-imaging validation checks across 6,000+ endpoints</li>
-					<li>Led an Entra ID cleanup initiative covering 17,000+ devices</li>
-					<li>Built Intune deployment tooling, including SYSTEM-context PowerShell app wrappers and registry-based detection rules</li>
-					<li>Integrated validation and reporting workflows with ServiceNow via its REST API</li>
-				</ul>
+				<p>
+					I like understanding how the work actually happens, finding the friction, and building something that improves the process without making it harder to support later.
+				</p>
 			</div>
 		</div>
-	</div>
-</section>
+	</section>
 
-<!-- Featured Project -->
-<section class="block" id="featured">
-	<div class="wrapper">
-		<p class="eyebrow">Featured project</p>
-		<h2 class="title">DesktopSupportQC</h2>
-		<div class="panel">
-			<p class="desc">
-				A modular WPF desktop platform that automates post-imaging workstation validation —
-				catching configuration issues before a device ever reaches an end user, and filing
-				structured reports straight into ServiceNow. Originally built as my CPSC 597 capstone
-				(presented as the Workstation Validation Center), it's now deployed in production across
-				Monterey County's IT department.
-			</p>
+	<section class="section featured" id="work">
+		<div class="shell">
 
-			<div class="stat-row">
-				<div class="stat"><span class="num">30+</span><span class="label">automated checks</span></div>
-				<div class="stat teal"><span class="num">6,000+</span><span class="label">endpoints validated</span></div>
-				<div class="stat amber"><span class="num">17,000+</span><span class="label">Entra ID devices cleaned</span></div>
+			<div class="section-heading">
+				<div>
+					<p class="section-index">02 / FEATURED WORK</p>
+					<h2>Enterprise System Validation Platform</h2>
+				</div>
+
+				<p class="heading-note">
+					A production-focused internal tool built from a real operational need.
+				</p>
 			</div>
 
-			<div class="stack-tags">
-				<span class="stack-tag">C#</span>
-				<span class="stack-tag">.NET 8</span>
-				<span class="stack-tag">WPF</span>
-				<span class="stack-tag">REST APIs</span>
-				<span class="stack-tag">PowerShell</span>
-				<span class="stack-tag">ServiceNow API</span>
-			</div>
+			<article class="case-study">
+				<div class="case-main">
+					<div class="case-label">DESKTOPSUPPORTQC</div>
 
-			<div class="media">
-				<img src="images/qcplatform.jpg" alt="DesktopSupportQC validation platform interface" />
-			</div>
+					<h3>
+						Replacing a manual workstation checklist with a repeatable validation system.
+					</h3>
+
+					<p>
+						Device readiness checks were time-consuming, easy to perform differently from one technician to another, and difficult to document consistently. I designed and built a modular C#/.NET desktop application that turns those checks into a structured workflow.
+					</p>
+
+					<div class="case-grid">
+						<div>
+							<span class="case-key">Problem</span>
+							<p>
+								Manual validation created inconsistent results and made handoff quality dependent on individual checklists.
+							</p>
+						</div>
+
+						<div>
+							<span class="case-key">Solution</span>
+							<p>
+								A modular WPF platform for automated checks, guided verification, reporting, and enterprise deployment.
+							</p>
+						</div>
+
+						<div>
+							<span class="case-key">My role</span>
+							<p>
+								Architecture, UI development, validation logic, PowerShell integration, packaging, deployment, and ongoing improvement.
+							</p>
+						</div>
+
+						<div>
+							<span class="case-key">Direction</span>
+							<p>
+								Continue expanding the platform into a broader onboarding and workstation quality-control workflow.
+							</p>
+						</div>
+					</div>
+
+					<div class="tech-line">
+						<span>C#</span>
+						<span>.NET 8</span>
+						<span>WPF</span>
+						<span>PowerShell</span>
+						<span>REST APIs</span>
+						<span>JSON</span>
+					</div>
+				</div>
+
+				<aside class="case-side">
+					<div class="metric">
+						<strong>30+</strong>
+						<span>validation checks</span>
+					</div>
+
+					<div class="metric">
+						<strong>6,000+</strong>
+						<span>supported endpoints</span>
+					</div>
+
+					<div class="metric">
+						<strong>17,000+</strong>
+						<span>devices reviewed during cleanup work</span>
+					</div>
+
+					<div class="case-shot">
+						<img
+							src="images/qcplatform.jpg"
+							alt="Enterprise system validation platform interface" />
+					</div>
+				</aside>
+			</article>
 
 			<div class="video-frame">
-				<iframe width="560" height="315" src="https://www.youtube.com/embed/pzwMmViu7hs?si=1Ov6Z63v8Jo0Y1rW" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-			</div>
-			<p class="desc">Demo: automated system checks running end-to-end and generating a readiness report.</p>
-		</div>
-	</div>
-</section>
-
-<!-- Skills -->
-<section class="block" id="skills">
-	<div class="wrapper">
-		<p class="eyebrow">Core stack</p>
-		<h2 class="title">Skills &amp; Technologies</h2>
-		<div class="skills-grid">
-			<div class="skill-card">
-				<h3>Languages &amp; Frameworks</h3>
-				<p>C#, .NET 8, PowerShell, Python, WPF</p>
-			</div>
-			<div class="skill-card c-teal">
-				<h3>Data</h3>
-				<p>SQL, PostgreSQL</p>
-			</div>
-			<div class="skill-card c-amber">
-				<h3>Identity &amp; Devices</h3>
-				<p>Entra ID, Microsoft Graph API, Intune, SCCM</p>
-			</div>
-			<div class="skill-card c-purple">
-				<h3>Integrations</h3>
-				<p>ServiceNow REST API</p>
-			</div>
-			<div class="skill-card c-pink">
-				<h3>Reporting</h3>
-				<p>Power BI, SSRS</p>
+				<iframe
+					src="https://www.youtube.com/embed/pzwMmViu7hs?si=1Ov6Z63v8Jo0Y1rW"
+					title="Enterprise System Validation Platform demonstration"
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+					referrerpolicy="strict-origin-when-cross-origin"
+					allowfullscreen>
+				</iframe>
 			</div>
 		</div>
-	</div>
-</section>
+	</section>
 
-<!-- Other Projects -->
-<section class="block" id="projects">
-	<div class="wrapper">
-		<p class="eyebrow">More work</p>
-		<h2 class="title">Projects</h2>
+	<section class="section experience" id="experience">
+		<div class="shell">
 
-		<div class="grid">
-
-			<!-- 3D Demo -->
-			<article class="card">
-				<div class="thumb three-thumb">
-					<div id="three-demo" class="mini-model" aria-label="Interactive Three.js model preview"></div>
+			<div class="section-heading">
+				<div>
+					<p class="section-index">03 / EXPERIENCE</p>
+					<h2>Work that taught me how systems fail—and how to improve them.</h2>
 				</div>
-				<div class="body">
-					<span class="tag live">Live render</span>
-					<h3>3D Portfolio Character</h3>
-					<p class="desc-sm">Interactive WebGL character render built with Three.js and GLB model loading.</p>
-					<p class="stack">JavaScript · Three.js · GLB/GLTF · WebGL</p>
-				</div>
-			</article>
+			</div>
 
-			<!-- OED -->
-			<article class="card">
-				<a href="http://oed.beloit.edu:3030/" class="thumb">
-					<img src="images/OEDStartupMainPage.png" alt="Open Energy Dashboard" />
+			<div class="role-row">
+				<div class="role-meta">
+					<span class="role-date">CURRENT</span>
+					<span>County of Monterey ITD</span>
+				</div>
+
+				<div class="role-content">
+					<h3>IT Systems Analyst / Automation Developer</h3>
+
+					<p>
+						I support enterprise technology at the operational level while building the automation and internal tools that make the environment easier to manage at scale.
+					</p>
+
+					<ul>
+						<li>Built and deployed a .NET 8/WPF workstation validation platform.</li>
+						<li>Created Intune deployment workflows, PowerShell tooling, and detection logic.</li>
+						<li>Led large-scale device cleanup and configuration improvement initiatives.</li>
+						<li>Worked across endpoint management, identity, reporting, deployment, and support.</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="principles">
+				<div>
+					<span>01</span>
+					<h3>Own the result</h3>
+					<p>
+						I care about whether the solution works in production, not only whether the code runs.
+					</p>
+				</div>
+
+				<div>
+					<span>02</span>
+					<h3>Learn the system</h3>
+					<p>
+						I want to understand the business, the users, and the constraints before deciding what to build.
+					</p>
+				</div>
+
+				<div>
+					<span>03</span>
+					<h3>Improve over time</h3>
+					<p>
+						I prefer durable progress: ship something useful, support it, measure it, and make it better.
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="section projects">
+		<div class="shell">
+
+			<div class="section-heading">
+				<div>
+					<p class="section-index">04 / SELECTED PROJECTS</p>
+					<h2>Other things I have built and explored.</h2>
+				</div>
+			</div>
+
+			<div class="project-list">
+
+				<article class="project-row">
+					<div class="project-number">01</div>
+
+					<div class="project-preview dark">
+						<div
+							id="three-demo"
+							aria-label="Interactive Three.js model preview">
+						</div>
+					</div>
+
+					<div class="project-copy">
+						<p class="project-type">WEBGL EXPERIMENT</p>
+						<h3>3D Portfolio Character</h3>
+
+						<p>
+							An interactive Three.js model used to explore GLB loading, lighting, camera framing, animation, and responsive rendering.
+						</p>
+
+						<span>JavaScript · Three.js · GLB/GLTF · WebGL</span>
+					</div>
+				</article>
+
+				<article class="project-row">
+					<div class="project-number">02</div>
+
+					<a
+						class="project-preview"
+						href="https://openenergydashboard.github.io/">
+
+						<img
+							src="images/OEDStartupMainPage.png"
+							alt="Open Energy Dashboard" />
+					</a>
+
+					<div class="project-copy">
+						<p class="project-type">OPEN SOURCE</p>
+
+						<h3>
+							<a href="https://openenergydashboard.github.io/">
+								Open Energy Dashboard
+							</a>
+						</h3>
+
+						<p>
+							An open-source energy analytics platform where I contributed across a larger existing codebase and collaborative development workflow.
+						</p>
+
+						<span>JavaScript · Python · TypeScript · SQL</span>
+					</div>
+				</article>
+
+				<article class="project-row">
+					<div class="project-number">03</div>
+
+					<a
+						class="project-preview"
+						href="https://osmansafi.github.io/solarsystem/">
+
+						<img
+							src="images/solarsystem.JPG"
+							alt="3D Solar System Simulation" />
+					</a>
+
+					<div class="project-copy">
+						<p class="project-type">INTERACTIVE DEMO</p>
+
+						<h3>
+							<a href="https://osmansafi.github.io/solarsystem/">
+								3D Solar System Simulation
+							</a>
+						</h3>
+
+						<p>
+							A browser-based orbital simulation built to practice interactive graphics, movement, and spatial presentation.
+						</p>
+
+						<span>JavaScript · WebGL</span>
+					</div>
+				</article>
+
+			</div>
+		</div>
+	</section>
+
+	<section class="section toolkit">
+		<div class="shell toolkit-grid">
+			<div>
+				<p class="section-index">05 / TOOLKIT</p>
+				<h2>Technologies I use to solve real problems.</h2>
+			</div>
+
+			<div class="tool-columns">
+				<div>
+					<h3>Build</h3>
+					<p>C#, .NET 8, WPF, PowerShell, Python, JavaScript</p>
+				</div>
+
+				<div>
+					<h3>Integrate</h3>
+					<p>REST APIs, Microsoft Graph, ServiceNow, JSON, SQL, PostgreSQL</p>
+				</div>
+
+				<div>
+					<h3>Operate</h3>
+					<p>Intune, SCCM, Entra ID, enterprise packaging, endpoint validation</p>
+				</div>
+
+				<div>
+					<h3>Communicate</h3>
+					<p>Power BI, SSRS, technical documentation, demos, stakeholder support</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="section closing">
+		<div class="shell closing-grid">
+			<div>
+				<p class="section-index">06 / NEXT CHAPTER</p>
+				<h2>I am looking for more than a title.</h2>
+			</div>
+
+			<div>
+				<p>
+					I want to join a company where I can contribute now, keep learning, take on greater responsibility, and build a long-term reputation for doing dependable work.
+				</p>
+
+				<p>
+					My goal is to grow into the person who understands the systems, earns the team's trust, helps others succeed, and eventually has a meaningful voice in where the organization goes next.
+				</p>
+
+				<a
+					class="button primary"
+					href="mailto:osmansafi1027@gmail.com">
+					Get in touch
 				</a>
-				<div class="body">
-					<span class="tag">Open source</span>
-					<h3><a href="https://openenergydashboard.github.io/">Open Energy Dashboard</a></h3>
-					<p class="desc-sm">Open source platform for energy analytics dashboards.</p>
-					<p class="stack">JavaScript · Python · TypeScript · SQL</p>
-					<div class="links"><a href="https://github.com/OsmanSafi/OED">View code →</a></div>
-				</div>
-			</article>
-
-			<!-- Solar -->
-			<article class="card">
-				<a href="https://osmansafi.github.io/solarsystem/" class="thumb">
-					<img src="images/solarsystem.JPG" alt="3D Solar System Simulation" />
-				</a>
-				<div class="body">
-					<span class="tag live">Live demo</span>
-					<h3><a href="https://osmansafi.github.io/solarsystem/">3D Solar System Simulation</a></h3>
-					<p class="desc-sm">Interactive WebGL orbital simulation.</p>
-					<p class="stack">JavaScript · WebGL</p>
-				</div>
-			</article>
-
+			</div>
 		</div>
-	</div>
-</section>
+	</section>
 
-<!-- Footer -->
-<footer id="footer">
-	<div class="wrapper">
-		<h2 class="title">Let's talk</h2>
-		<p class="desc">Open to remote software engineering and senior IT/automation roles, in government or private sector.</p>
-		<div class="contact-row">
-			<a href="mailto:osmansafi1027@gmail.com" class="cta primary">osmansafi1027@gmail.com</a>
-			<a href="https://www.linkedin.com/in/osman-safi-097a35204/" class="cta secondary">LinkedIn</a>
-			<a href="https://github.com/OsmanSafi" class="cta secondary">GitHub</a>
+</main>
+
+<footer id="site-footer">
+	<div class="shell footer-inner">
+		<div>
+			<strong>Osman Safi</strong>
+			<span>Monterey, California</span>
+		</div>
+
+		<div class="footer-links">
+			<a href="mailto:osmansafi1027@gmail.com">Email</a>
+			<a href="https://www.linkedin.com/in/osman-safi-097a35204/">LinkedIn</a>
+			<a href="https://github.com/OsmanSafi">GitHub</a>
 		</div>
 	</div>
 </footer>
 
-<!-- THREE.js + Hero Background -->
 <script>
-// ---- Hero background: cursor-reactive particle network ----
 (function () {
 	const canvas = document.getElementById("hero-network");
-	if (!canvas) return;
 
-	const ctx = canvas.getContext("2d");
-	let w, h, points;
-	const COUNT = 50;
-	const COLORS = ["rgba(36,81,176,0.55)", "rgba(14,124,134,0.5)"];
-	const mouse = { x: -9999, y: -9999, active: false };
-	const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-	function resize() {
-		w = canvas.width = canvas.parentElement.offsetWidth;
-		h = canvas.height = canvas.parentElement.offsetHeight;
+	if (!canvas) {
+		return;
 	}
 
-	function init() {
-		points = Array.from({ length: COUNT }, () => ({
-			x: Math.random() * w,
-			y: Math.random() * h,
-			vx: (Math.random() - 0.5) * 0.25,
-			vy: (Math.random() - 0.5) * 0.25,
-			c: COLORS[Math.floor(Math.random() * COLORS.length)]
+	const ctx = canvas.getContext("2d");
+
+	const mouse = {
+		x: -9999,
+		y: -9999,
+		active: false
+	};
+
+	const reduceMotion = window.matchMedia(
+		"(prefers-reduced-motion: reduce)"
+	).matches;
+
+	let width = 0;
+	let height = 0;
+	let points = [];
+
+	function resize() {
+		width = canvas.width = canvas.parentElement.offsetWidth;
+		height = canvas.height = canvas.parentElement.offsetHeight;
+
+		points = Array.from({ length: 44 }, () => ({
+			x: Math.random() * width,
+			y: Math.random() * height,
+			vx: (Math.random() - 0.5) * 0.22,
+			vy: (Math.random() - 0.5) * 0.22
 		}));
 	}
 
-	function drawFrame(animatePoints) {
-		ctx.clearRect(0, 0, w, h);
+	function draw(move) {
+		ctx.clearRect(0, 0, width, height);
 
-		for (const p of points) {
-			if (animatePoints) {
-				p.x += p.vx;
-				p.y += p.vy;
-				if (p.x < 0 || p.x > w) p.vx *= -1;
-				if (p.y < 0 || p.y > h) p.vy *= -1;
+		for (const point of points) {
+			if (move) {
+				point.x += point.vx;
+				point.y += point.vy;
 
-				if (mouse.active) {
-					const dx = p.x - mouse.x;
-					const dy = p.y - mouse.y;
-					const dist = Math.hypot(dx, dy);
-					if (dist < 110 && dist > 0.01) {
-						const force = ((110 - dist) / 110) * 0.6;
-						p.x += (dx / dist) * force;
-						p.y += (dy / dist) * force;
-					}
+				if (point.x < 0 || point.x > width) {
+					point.vx *= -1;
+				}
+
+				if (point.y < 0 || point.y > height) {
+					point.vy *= -1;
 				}
 			}
 		}
 
 		for (let i = 0; i < points.length; i++) {
 			for (let j = i + 1; j < points.length; j++) {
-				const a = points[i];
-				const b = points[j];
-				const dist = Math.hypot(a.x - b.x, a.y - b.y);
-				if (dist < 130) {
-					ctx.strokeStyle = "rgba(91,98,112," + (0.12 * (1 - dist / 130)) + ")";
-					ctx.lineWidth = 1;
+				const distance = Math.hypot(
+					points[i].x - points[j].x,
+					points[i].y - points[j].y
+				);
+
+				if (distance < 145) {
+					ctx.strokeStyle =
+						`rgba(197, 157, 64, ${0.12 * (1 - distance / 145)})`;
+
 					ctx.beginPath();
-					ctx.moveTo(a.x, a.y);
-					ctx.lineTo(b.x, b.y);
+					ctx.moveTo(points[i].x, points[i].y);
+					ctx.lineTo(points[j].x, points[j].y);
 					ctx.stroke();
 				}
 			}
 
 			if (mouse.active) {
-				const dist = Math.hypot(points[i].x - mouse.x, points[i].y - mouse.y);
-				if (dist < 150) {
-					ctx.strokeStyle = "rgba(36,81,176," + (0.28 * (1 - dist / 150)) + ")";
-					ctx.lineWidth = 1;
+				const distance = Math.hypot(
+					points[i].x - mouse.x,
+					points[i].y - mouse.y
+				);
+
+				if (distance < 165) {
+					ctx.strokeStyle =
+						`rgba(194, 38, 38, ${0.22 * (1 - distance / 165)})`;
+
 					ctx.beginPath();
 					ctx.moveTo(points[i].x, points[i].y);
 					ctx.lineTo(mouse.x, mouse.y);
 					ctx.stroke();
 				}
 			}
-		}
 
-		for (const p of points) {
-			ctx.fillStyle = p.c;
+			ctx.fillStyle = "rgba(236, 214, 156, 0.66)";
 			ctx.beginPath();
-			ctx.arc(p.x, p.y, 2.2, 0, Math.PI * 2);
+			ctx.arc(points[i].x, points[i].y, 1.6, 0, Math.PI * 2);
 			ctx.fill();
 		}
 	}
 
-	function loop() {
-		drawFrame(true);
-		requestAnimationFrame(loop);
+	function animate() {
+		draw(true);
+		requestAnimationFrame(animate);
 	}
 
 	resize();
-	init();
 
 	if (reduceMotion) {
-		drawFrame(false);
+		draw(false);
 	} else {
-		loop();
-		canvas.parentElement.addEventListener("mousemove", (e) => {
-			const rect = canvas.getBoundingClientRect();
-			mouse.x = e.clientX - rect.left;
-			mouse.y = e.clientY - rect.top;
-			mouse.active = true;
-		});
-		canvas.parentElement.addEventListener("mouseleave", () => {
-			mouse.active = false;
-		});
+		animate();
 	}
 
-	window.addEventListener("resize", () => {
-		resize();
-		init();
-		if (reduceMotion) drawFrame(false);
+	canvas.parentElement.addEventListener("mousemove", event => {
+		const rect = canvas.getBoundingClientRect();
+
+		mouse.x = event.clientX - rect.left;
+		mouse.y = event.clientY - rect.top;
+		mouse.active = true;
 	});
+
+	canvas.parentElement.addEventListener("mouseleave", () => {
+		mouse.active = false;
+	});
+
+	window.addEventListener("resize", resize);
 })();
 </script>
 
@@ -398,245 +572,395 @@
 
 <script type="module">
 import * as THREE from "three";
-import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 
-const MODEL_URL = "Models/cyborg-osman.glb";
-const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+import {
+	OrbitControls
+} from "three/addons/controls/OrbitControls.js";
 
-function makeFallbackCyborg() {
+import {
+	GLTFLoader
+} from "three/addons/loaders/GLTFLoader.js";
+
+const MODEL_URL = "models/character.glb";
+
+const reduceMotion = window.matchMedia(
+	"(prefers-reduced-motion: reduce)"
+).matches;
+
+function createFallback() {
 	const group = new THREE.Group();
 
-	const navy = new THREE.MeshStandardMaterial({ color: 0x1f2430, roughness: 0.55, metalness: 0.25 });
-	const white = new THREE.MeshStandardMaterial({ color: 0xf6f7f9, roughness: 0.45, metalness: 0.2 });
-	const metal = new THREE.MeshStandardMaterial({ color: 0xc9d3df, roughness: 0.2, metalness: 0.85 });
-	const darkMetal = new THREE.MeshStandardMaterial({ color: 0x3a404a, roughness: 0.25, metalness: 0.75 });
-	const skin = new THREE.MeshStandardMaterial({ color: 0xc58b68, roughness: 0.7, metalness: 0.05 });
-	const beard = new THREE.MeshStandardMaterial({ color: 0x15110f, roughness: 0.85 });
-	const glow = new THREE.MeshStandardMaterial({ color: 0x44dff2, emissive: 0x20bcd4, emissiveIntensity: 1.8 });
+	const black = new THREE.MeshStandardMaterial({
+		color: 0x090909,
+		roughness: 0.28,
+		metalness: 0.82
+	});
 
-	// Torso
-	const torso = new THREE.Mesh(new THREE.CapsuleGeometry(0.75, 1.35, 6, 16), navy);
-	torso.scale.set(1.0, 1.2, 0.55);
-	torso.position.y = 0.25;
-	group.add(torso);
+	const white = new THREE.MeshStandardMaterial({
+		color: 0xf3f1eb,
+		roughness: 0.34,
+		metalness: 0.52
+	});
 
-	// White armor chest plate
-	const chest = new THREE.Mesh(new THREE.BoxGeometry(0.95, 0.82, 0.16), white);
-	chest.position.set(0, 0.72, 0.43);
+	const gold = new THREE.MeshStandardMaterial({
+		color: 0xc79a3b,
+		roughness: 0.22,
+		metalness: 0.9
+	});
+
+	const redGlow = new THREE.MeshStandardMaterial({
+		color: 0xa70f1d,
+		emissive: 0x7b0610,
+		emissiveIntensity: 2.2,
+		roughness: 0.24,
+		metalness: 0.72
+	});
+
+	const body = new THREE.Mesh(
+		new THREE.IcosahedronGeometry(1.05, 2),
+		black
+	);
+
+	body.scale.set(1.18, 0.88, 1);
+	group.add(body);
+
+	const chest = new THREE.Mesh(
+		new THREE.IcosahedronGeometry(0.54, 1),
+		white
+	);
+
+	chest.scale.set(1.05, 0.72, 0.38);
+	chest.position.set(0, -0.02, 0.72);
 	group.add(chest);
 
-	// Hex power module
-	const core = new THREE.Mesh(new THREE.CylinderGeometry(0.22, 0.22, 0.09, 6), glow);
+	const core = new THREE.Mesh(
+		new THREE.CylinderGeometry(0.17, 0.17, 0.09, 6),
+		gold
+	);
+
 	core.rotation.x = Math.PI / 2;
-	core.position.set(0, 0.82, 0.55);
+	core.position.set(0, -0.02, 1.03);
 	group.add(core);
 
-	// Neck + head
-	const neck = new THREE.Mesh(new THREE.CylinderGeometry(0.18, 0.2, 0.28, 20), skin);
-	neck.position.y = 1.43;
-	group.add(neck);
+	const eyeLeft = new THREE.Mesh(
+		new THREE.SphereGeometry(0.11, 18, 12),
+		redGlow
+	);
 
-	const head = new THREE.Mesh(new THREE.SphereGeometry(0.43, 32, 24), skin);
-	head.scale.set(0.9, 1.05, 0.82);
-	head.position.y = 1.9;
-	group.add(head);
+	const eyeRight = eyeLeft.clone();
 
-	// Half-metal face shell on character's right side
-	const facePlate = new THREE.Mesh(new THREE.SphereGeometry(0.438, 32, 24, -Math.PI / 2, Math.PI, 0.08, Math.PI * 0.88), metal);
-	facePlate.scale.set(0.91, 1.06, 0.83);
-	facePlate.rotation.y = -0.08;
-	facePlate.position.set(0.12, 1.9, 0.01);
-	group.add(facePlate);
+	eyeLeft.position.set(-0.32, 0.14, 0.94);
+	eyeRight.position.set(0.32, 0.14, 0.94);
 
-	// Glowing cyborg eye
-	const eye = new THREE.Mesh(new THREE.SphereGeometry(0.055, 18, 12), glow);
-	eye.position.set(0.19, 1.98, 0.34);
-	group.add(eye);
-
-	// Hair cap
-	const hair = new THREE.Mesh(new THREE.SphereGeometry(0.44, 32, 16, 0, Math.PI * 2, 0, Math.PI / 2.1), beard);
-	hair.scale.set(0.9, 0.48, 0.82);
-	hair.position.y = 2.2;
-	group.add(hair);
-
-	// Beard
-	const beardMesh = new THREE.Mesh(new THREE.SphereGeometry(0.39, 24, 16, 0, Math.PI * 2, Math.PI / 2.35, Math.PI / 2.6), beard);
-	beardMesh.scale.set(0.95, 0.72, 0.8);
-	beardMesh.position.set(0, 1.73, 0.05);
-	group.add(beardMesh);
-
-	// Smile
-	const smile = new THREE.Mesh(new THREE.BoxGeometry(0.24, 0.025, 0.025), white);
-	smile.position.set(-0.12, 1.77, 0.34);
-	group.add(smile);
-
-	// Shoulders
-	const leftShoulder = new THREE.Mesh(new THREE.SphereGeometry(0.28, 24, 16), metal);
-	leftShoulder.scale.set(1.05, 0.72, 0.85);
-	leftShoulder.position.set(-0.82, 0.93, 0);
-	group.add(leftShoulder);
-
-	const rightShoulder = new THREE.Mesh(new THREE.SphereGeometry(0.28, 24, 16), darkMetal);
-	rightShoulder.scale.set(1.05, 0.72, 0.85);
-	rightShoulder.position.set(0.82, 0.93, 0);
-	group.add(rightShoulder);
-
-	// Arms
-	const leftUpperArm = new THREE.Mesh(new THREE.CylinderGeometry(0.14, 0.16, 0.72, 18), metal);
-	leftUpperArm.position.set(-0.98, 0.42, 0);
-	leftUpperArm.rotation.z = -0.15;
-	group.add(leftUpperArm);
-
-	const leftForearm = new THREE.Mesh(new THREE.CylinderGeometry(0.13, 0.15, 0.78, 18), metal);
-	leftForearm.position.set(-1.1, -0.25, 0.08);
-	leftForearm.rotation.z = 0.18;
-	group.add(leftForearm);
-
-	const rightUpperArm = new THREE.Mesh(new THREE.CylinderGeometry(0.14, 0.16, 0.72, 18), navy);
-	rightUpperArm.position.set(0.98, 0.42, 0);
-	rightUpperArm.rotation.z = 0.15;
-	group.add(rightUpperArm);
-
-	const rightForearm = new THREE.Mesh(new THREE.CylinderGeometry(0.13, 0.15, 0.78, 18), navy);
-	rightForearm.position.set(1.1, -0.25, 0.08);
-	rightForearm.rotation.z = -0.18;
-	group.add(rightForearm);
-
-	// Hands
-	const handL = new THREE.Mesh(new THREE.SphereGeometry(0.14, 20, 12), metal);
-	handL.position.set(-1.18, -0.74, 0.1);
-	group.add(handL);
-
-	const handR = new THREE.Mesh(new THREE.SphereGeometry(0.14, 20, 12), skin);
-	handR.position.set(1.18, -0.74, 0.1);
-	group.add(handR);
-
-	// Legs
-	for (const side of [-1, 1]) {
-		const leg = new THREE.Mesh(new THREE.CylinderGeometry(0.18, 0.2, 1.25, 18), side < 0 ? darkMetal : navy);
-		leg.position.set(side * 0.28, -1.08, 0);
-		group.add(leg);
-
-		const boot = new THREE.Mesh(new THREE.BoxGeometry(0.34, 0.18, 0.55), darkMetal);
-		boot.position.set(side * 0.28, -1.78, 0.12);
-		group.add(boot);
-	}
-
-	// Floating UI panel
-	const panel = new THREE.Mesh(new THREE.PlaneGeometry(0.9, 0.55), new THREE.MeshBasicMaterial({
-		color: 0x44dff2,
-		transparent: true,
-		opacity: 0.18,
-		side: THREE.DoubleSide
-	}));
-	panel.position.set(1.25, 1.15, 0.35);
-	panel.rotation.y = -0.4;
-	group.add(panel);
-
-	const panelLineMat = new THREE.LineBasicMaterial({ color: 0x44dff2, transparent: true, opacity: 0.85 });
-	for (let i = 0; i < 5; i++) {
-		const points = [
-			new THREE.Vector3(0, 0.2 - i * 0.1, 0),
-			new THREE.Vector3(0.65 - i * 0.05, 0.2 - i * 0.1, 0)
-		];
-		const line = new THREE.Line(new THREE.BufferGeometry().setFromPoints(points), panelLineMat);
-		line.position.set(0.85, 1.18, 0.65);
-		line.rotation.y = -0.4;
-		group.add(line);
-	}
-
-	group.scale.setScalar(1.15);
-	group.position.y = 0.25;
+	group.add(eyeLeft, eyeRight);
 
 	return group;
 }
 
-function frameObject(object, camera, targetScale = 2.8) {
+function applyArmorPalette(root) {
+	const palette = {
+		black: new THREE.Color(0x080808),
+		white: new THREE.Color(0xf2efe7),
+		gold: new THREE.Color(0xc89a3d),
+		red: new THREE.Color(0xa80f1d)
+	};
+
+	root.traverse(node => {
+		if (!node.isMesh || !node.material) {
+			return;
+		}
+
+		const sourceMaterials = Array.isArray(node.material)
+			? node.material
+			: [node.material];
+
+		const updatedMaterials = sourceMaterials.map(
+			(sourceMaterial, index) => {
+
+				const material = sourceMaterial.clone();
+
+				const name =
+					`${node.name} ${material.name}`.toLowerCase();
+
+				const preserveOriginal =
+					name.includes("skin") ||
+					name.includes("face") ||
+					name.includes("head") ||
+					name.includes("hair") ||
+					name.includes("beard");
+
+				if (preserveOriginal) {
+					return material;
+				}
+
+				/*
+					Remove the original armor texture so the new palette
+					is clearly visible. Skin and facial materials are
+					preserved above.
+				*/
+				material.map = null;
+
+				material.metalness = Math.max(
+					material.metalness ?? 0,
+					0.62
+				);
+
+				material.roughness = Math.min(
+					material.roughness ?? 0.5,
+					0.38
+				);
+
+				if (
+					name.includes("eye") ||
+					name.includes("light") ||
+					name.includes("glow") ||
+					name.includes("emissive")
+				) {
+					material.color.copy(palette.red);
+
+					material.emissive =
+						palette.red.clone().multiplyScalar(0.75);
+
+					material.emissiveIntensity = 2.4;
+				}
+				else if (
+					name.includes("gold") ||
+					name.includes("trim") ||
+					name.includes("accent") ||
+					name.includes("core")
+				) {
+					material.color.copy(palette.gold);
+				}
+				else if (
+					name.includes("white") ||
+					name.includes("silver") ||
+					name.includes("chest")
+				) {
+					material.color.copy(palette.white);
+				}
+				else {
+					/*
+						Spread the four colors across unnamed armor pieces.
+
+						50% black
+						30% white
+						10% gold
+						10% red
+					*/
+					const selector = (node.id + index) % 10;
+
+					if (selector <= 4) {
+						material.color.copy(palette.black);
+					}
+					else if (selector <= 7) {
+						material.color.copy(palette.white);
+					}
+					else if (selector === 8) {
+						material.color.copy(palette.gold);
+					}
+					else {
+						material.color.copy(palette.red);
+					}
+				}
+
+				material.needsUpdate = true;
+
+				return material;
+			}
+		);
+
+		node.material = Array.isArray(node.material)
+			? updatedMaterials
+			: updatedMaterials[0];
+	});
+}
+
+function normalizeModel(object, targetSize) {
 	const box = new THREE.Box3().setFromObject(object);
 	const size = new THREE.Vector3();
 	const center = new THREE.Vector3();
+
 	box.getSize(size);
 	box.getCenter(center);
 
 	object.position.sub(center);
 
-	const maxDim = Math.max(size.x, size.y, size.z);
-	const scale = targetScale / maxDim;
-	object.scale.multiplyScalar(scale);
+	const maxDimension = Math.max(
+		size.x,
+		size.y,
+		size.z
+	) || 1;
+
+	object.scale.multiplyScalar(
+		targetSize / maxDimension
+	);
 }
 
-function createModelViewer(containerId, options = {}) {
+function createViewer(containerId, options) {
 	const container = document.getElementById(containerId);
-	if (!container) return;
+
+	if (!container) {
+		return;
+	}
 
 	const scene = new THREE.Scene();
-	scene.background = null;
 
-	const camera = new THREE.PerspectiveCamera(options.fov || 35, 1, 0.1, 100);
-	camera.position.set(0, options.cameraY || 0.8, options.cameraZ || 5.4);
+	const camera = new THREE.PerspectiveCamera(
+		options.fov,
+		1,
+		0.1,
+		100
+	);
 
-	const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-	renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+	camera.position.set(
+		0,
+		options.cameraY,
+		options.cameraZ
+	);
+
+	const renderer = new THREE.WebGLRenderer({
+		antialias: true,
+		alpha: true
+	});
+
+	renderer.setPixelRatio(
+		Math.min(window.devicePixelRatio, 2)
+	);
+
 	renderer.outputColorSpace = THREE.SRGBColorSpace;
+
 	container.appendChild(renderer.domElement);
 
-	scene.add(new THREE.HemisphereLight(0xffffff, 0x2a3442, 2.0));
+	const hemisphereLight = new THREE.HemisphereLight(
+		0xfff8e8,
+		0x120707,
+		2.2
+	);
 
-	const keyLight = new THREE.DirectionalLight(0xffffff, 2.4);
+	scene.add(hemisphereLight);
+
+	const keyLight = new THREE.DirectionalLight(
+		0xffffff,
+		2.5
+	);
+
 	keyLight.position.set(4, 5, 5);
 	scene.add(keyLight);
 
-	const fillLight = new THREE.DirectionalLight(0x44dff2, 1.0);
-	fillLight.position.set(-3, 2, 4);
-	scene.add(fillLight);
-
-	const platform = new THREE.Mesh(
-		new THREE.CylinderGeometry(1.45, 1.45, 0.08, 64),
-		new THREE.MeshStandardMaterial({ color: 0xf1f4f8, roughness: 0.45, metalness: 0.15 })
+	const goldRimLight = new THREE.DirectionalLight(
+		0xc79a3b,
+		1.75
 	);
-	platform.position.y = -1.9;
-	scene.add(platform);
+
+	goldRimLight.position.set(-4, 1, -2);
+	scene.add(goldRimLight);
+
+	const redFillLight = new THREE.PointLight(
+		0xa80f1d,
+		1.15,
+		12
+	);
+
+	redFillLight.position.set(2.5, -1, 3);
+	scene.add(redFillLight);
 
 	let model = null;
 	let mixer = null;
 
 	const loader = new GLTFLoader();
-	loader.load(
-		MODEL_URL,
-		(gltf) => {
-			model = gltf.scene;
-			frameObject(model, camera, options.scale || 3.4);
-			model.position.y = options.y || -0.15;
-			scene.add(model);
 
-			if (gltf.animations && gltf.animations.length) {
-				mixer = new THREE.AnimationMixer(model);
-				mixer.clipAction(gltf.animations[0]).play();
-			}
-		},
-		undefined,
-		() => {
-			model = makeFallbackCyborg();
-			frameObject(model, camera, options.scale || 3.4);
-			model.position.y = options.y || -0.1;
-			scene.add(model);
+loader.load(
+	MODEL_URL,
+
+	(gltf) => {
+		console.log("GLB loaded successfully:", gltf);
+
+		model = gltf.scene;
+
+		// Calculate the model's original size and center.
+		const box = new THREE.Box3().setFromObject(model);
+		const size = new THREE.Vector3();
+		const center = new THREE.Vector3();
+
+		box.getSize(size);
+		box.getCenter(center);
+
+		console.log("Original model size:", size);
+		console.log("Original model center:", center);
+
+		// Move the model's center to 0,0,0.
+		model.position.x -= center.x;
+		model.position.y -= center.y;
+		model.position.z -= center.z;
+
+		// Resize the model to fit the viewer.
+		const maxDimension = Math.max(size.x, size.y, size.z);
+
+		if (maxDimension > 0) {
+			const scale = 3.4 / maxDimension;
+			model.scale.setScalar(scale);
 		}
+
+		// Slight vertical adjustment.
+		model.position.y = -0.15;
+
+		scene.add(model);
+
+		console.log("Model added to scene.");
+	},
+
+	(progress) => {
+		if (progress.total > 0) {
+			const percentage = Math.round(
+				(progress.loaded / progress.total) * 100
+			);
+
+			console.log(`Model loading: ${percentage}%`);
+		}
+	},
+
+	(error) => {
+		console.error("GLB loading failed:", error);
+	}
+);
+
+	const controls = new OrbitControls(
+		camera,
+		renderer.domElement
 	);
 
-	const controls = new OrbitControls(camera, renderer.domElement);
 	controls.enablePan = false;
 	controls.enableZoom = false;
 	controls.autoRotate = !reduceMotion;
-	controls.autoRotateSpeed = options.rotateSpeed || 1.1;
-	controls.target.set(0, options.targetY || 0.15, 0);
+	controls.autoRotateSpeed = options.rotation;
+
+	controls.target.set(
+		0,
+		options.targetY,
+		0
+	);
+
 	controls.update();
 
 	function resize() {
 		const rect = container.getBoundingClientRect();
-		const width = Math.max(rect.width, 1);
-		const height = Math.max(rect.height, 1);
-		renderer.setSize(width, height, false);
+
+		const width = Math.max(
+			rect.width,
+			1
+		);
+
+		const height = Math.max(
+			rect.height,
+			1
+		);
+
+		renderer.setSize(
+			width,
+			height,
+			false
+		);
+
 		camera.aspect = width / height;
 		camera.updateProjectionMatrix();
 	}
@@ -645,41 +969,47 @@ function createModelViewer(containerId, options = {}) {
 
 	function animate() {
 		requestAnimationFrame(animate);
+
 		const delta = clock.getDelta();
 
-		if (mixer && !reduceMotion) mixer.update(delta);
-		if (model && !reduceMotion && !mixer) model.rotation.y += options.idleSpeed || 0.002;
+		if (mixer && !reduceMotion) {
+			mixer.update(delta);
+		}
+
+		if (model && !mixer && !reduceMotion) {
+			model.position.y =
+				options.y +
+				Math.sin(clock.elapsedTime * 1.4) * 0.05;
+		}
 
 		controls.update();
 		renderer.render(scene, camera);
 	}
 
-	const observer = new ResizeObserver(resize);
-	observer.observe(container);
+	new ResizeObserver(resize).observe(container);
+
 	resize();
 	animate();
 }
 
-createModelViewer("hero-model", {
-	fov: 34,
-	cameraY: 0.55,
-	cameraZ: 5.6,
-	scale: 3.55,
-	y: -0.05,
-	targetY: 0.15,
-	rotateSpeed: 0.9,
-	idleSpeed: 0.0015
+createViewer("hero-model", {
+	fov: 32,
+	cameraY: 1.15,
+	cameraZ: 3.0,
+	size: 4.8,
+	y: -1.8,
+	targetY: 1.0,
+	rotation: 1.35
 });
 
-createModelViewer("three-demo", {
-	fov: 38,
-	cameraY: 0.6,
-	cameraZ: 5.2,
-	scale: 3.2,
-	y: -0.08,
-	targetY: 0.1,
-	rotateSpeed: 1.2,
-	idleSpeed: 0.0025
+createViewer("three-demo", {
+	fov: 30,
+	cameraY: 1.15,
+	cameraZ: 2.5,
+	size: 3.0,
+	y: -5.05,
+	targetY: -1.9,
+	rotation: 1.35
 });
 </script>
 
