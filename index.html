@@ -10,9 +10,9 @@
 
     <meta
         name="description"
-        content="Osman Safi's software engineering portfolio featuring desktop applications, automation tools, AI projects, and interactive web experiences.">
+        content="Osman Safi's portfolio featuring software development, automation, enterprise technology, and interactive graphics programming.">
 
-    <title>Osman Safi | Software Engineer</title>
+    <title>Osman Safi | Software Engineering Portfolio</title>
 
     <link
         rel="stylesheet"
@@ -32,9 +32,12 @@
         rel="stylesheet">
 </head>
 
+
 <body>
 
-    <!-- Navigation -->
+    <!-- ==========================================
+         Navigation
+    =========================================== -->
 
     <nav class="navbar">
 
@@ -59,8 +62,8 @@
             </li>
 
             <li>
-                <a href="#character">
-                    Character
+                <a href="#graphics">
+                    3D Graphics
                 </a>
             </li>
 
@@ -95,7 +98,10 @@
 
     <main id="top">
 
-        <!-- Hero -->
+
+        <!-- ==========================================
+             Hero
+        =========================================== -->
 
         <section class="hero">
 
@@ -104,7 +110,7 @@
                 <div class="hero-text">
 
                     <p class="subtitle">
-                        Software Engineer • IT Systems Analyst • Automation Developer
+                        IT Systems Analyst • Software Development • Automation
                     </p>
 
                     <h1>
@@ -112,25 +118,32 @@
                     </h1>
 
                     <p class="description">
-                        Welcome to my portfolio. Here you will find applications,
-                        automation tools, and software projects I have built—from
-                        enterprise IT solutions to interactive web experiences.
+                        I currently work as an IT systems analyst, building tools,
+                        automating processes, supporting enterprise technology, and
+                        solving problems that affect real users. My experience spans
+                        software development, systems, infrastructure, and project
+                        work, which allows me to approach challenges from more than
+                        one perspective.
+                    </p>
+
+                    <p class="hero-goal">
+                        I am looking for a software engineering role where a company
+                        can make full use of my skills, give me room to keep growing,
+                        and provide a long-term fit for my career and my family.
                     </p>
 
                     <div class="hero-buttons">
 
                         <a
-                            href="#projects"
+                            href="#featured"
                             class="primary-button">
-                            View Projects
+                            View My Work
                         </a>
 
                         <a
-                            href="https://github.com/OsmanSafi"
-                            target="_blank"
-                            rel="noopener noreferrer"
+                            href="#about"
                             class="secondary-button">
-                            GitHub
+                            About Me
                         </a>
 
                     </div>
@@ -151,7 +164,9 @@
         </section>
 
 
-        <!-- Featured Project -->
+        <!-- ==========================================
+             Featured Project
+        =========================================== -->
 
         <section id="featured">
 
@@ -168,10 +183,10 @@
                     </h2>
 
                     <p class="featured-description">
-                        DesktopSupportQC is an enterprise desktop application built
-                        in C# and WPF that automates workstation validation after
-                        imaging, reducing deployment time and helping ensure devices
-                        are fully configured before reaching end users.
+                        DesktopSupportQC is an enterprise desktop application
+                        designed to automate workstation validation after imaging.
+                        It helps technicians confirm that devices are properly
+                        configured before they are delivered to users.
                     </p>
 
                     <div class="tags centered-tags">
@@ -220,7 +235,7 @@
                         </h3>
 
                         <p>
-                            WPF Desktop App
+                            WPF Desktop Application
                         </p>
 
                     </div>
@@ -233,7 +248,7 @@
                         </h3>
 
                         <p>
-                            IT Deployment Ready
+                            Deployment Ready
                         </p>
 
                     </div>
@@ -279,48 +294,62 @@
         </section>
 
 
-        <!-- Character Section -->
+        <!-- ==========================================
+             Graphics Programming
+        =========================================== -->
 
-        <section id="character">
+        <section id="graphics">
 
-            <div class="container character-layout">
+            <div class="graphics-grid-overlay"></div>
 
-                <div class="character-copy">
+            <div class="graphics-blue-glow"></div>
 
-                    <p class="section-label">
-                        Interactive Portfolio
-                    </p>
-
-                    <h2>
-                        Meet the Character
-                    </h2>
-
-                    <p>
-                        A custom 3D character rendered directly in the browser
-                        using Three.js. The model includes custom lighting,
-                        automatic rotation, emissive glow effects, and an
-                        interactive power-up animation.
-                    </p>
-
-                    <div class="tags">
-
-                        <span>Three.js</span>
-                        <span>JavaScript</span>
-                        <span>WebGL</span>
-                        <span>GLB</span>
-
-                    </div>
-
-                </div>
+            <div class="graphics-gold-glow"></div>
 
 
-                <div class="character-frame">
+            <div class="container graphics-heading">
 
-                    <div class="character-frame-header">
+                <p class="section-label">
+                    Graphics Programming
+                </p>
 
-                        <span>
-                            PROFILE / OSMAN-SAFI
-                        </span>
+                <h2>
+                    Interactive 3D Experiences
+                </h2>
+
+                <p>
+                    My graphics programming experience includes real-time
+                    rendering, lighting, animation, camera systems, 3D
+                    transformations, and integrating models into interactive
+                    applications.
+                </p>
+
+            </div>
+
+
+            <div class="container graphics-showcase">
+
+
+                <!-- ==================================
+                     Active Character Stage
+                =================================== -->
+
+                <div class="character-stage">
+
+                    <div class="stage-header">
+
+                        <div>
+
+                            <span class="stage-label">
+                                Selected Model
+                            </span>
+
+                            <h3 id="active-character-name">
+                                Iron Man
+                            </h3>
+
+                        </div>
+
 
                         <span class="character-status">
                             ACTIVE
@@ -329,16 +358,231 @@
                     </div>
 
 
-                    <div id="character-viewer"></div>
+                    <div
+                        id="character-viewer"
+                        tabindex="0"
+                        aria-label="Interactive 3D character viewer">
+                    </div>
 
 
-                    <div class="character-frame-footer">
+                    <div class="stage-floor"></div>
 
-                        <span>
-                            3D MODEL
-                        </span>
 
-                        
+                    <div class="stage-footer">
+
+                        <p id="active-character-description">
+                            Static model demonstrating real-time lighting,
+                            materials, camera controls, and interactive
+                            visual effects.
+                        </p>
+
+
+                        <button
+                            id="character-action"
+                            class="scene-button"
+                            type="button">
+                            Power Up
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ==================================
+                     Model Library
+                =================================== -->
+
+                <div class="character-selection">
+
+                    <div class="selection-heading">
+
+                        <p class="selection-label">
+                            Model Library
+                        </p>
+
+                        <h3>
+                            Select a Character
+                        </h3>
+
+                        <p>
+                            Each model is used to demonstrate different graphics,
+                            animation, and interaction techniques.
+                        </p>
+
+                    </div>
+
+
+                    <div class="character-grid">
+
+
+                        <!-- Slot 1 -->
+
+                        <button
+                            class="character-card active"
+                            type="button"
+                            data-character="ironman">
+
+                            <span class="character-number">
+                                01
+                            </span>
+
+                            <span class="character-card-name">
+                                Iron Man
+                            </span>
+
+                            <span class="character-card-type">
+                                Lighting + Effects
+                            </span>
+
+                        </button>
+
+
+                        <!-- Slot 2 -->
+
+                        <button
+                            class="character-card"
+                            type="button"
+                            data-character="zero">
+
+                            <span class="character-number">
+                                02
+                            </span>
+
+                            <span class="character-card-name">
+                                Zero
+                            </span>
+
+                            <span class="character-card-type">
+                                Rigged Character
+                            </span>
+
+                        </button>
+
+
+                        <!-- Slot 3 -->
+
+                        <div class="character-card coming-soon">
+
+                            <span class="character-number">
+                                03
+                            </span>
+
+                            <span class="character-card-name">
+                                Coming Soon
+                            </span>
+
+                            <span class="character-card-type">
+                                Animated Model
+                            </span>
+
+                        </div>
+
+
+                        <!-- Slot 4 -->
+
+                        <div class="character-card coming-soon">
+
+                            <span class="character-number">
+                                04
+                            </span>
+
+                            <span class="character-card-name">
+                                Coming Soon
+                            </span>
+
+                            <span class="character-card-type">
+                                Animated Model
+                            </span>
+
+                        </div>
+
+
+                        <!-- Slot 5 -->
+
+                        <div class="character-card coming-soon">
+
+                            <span class="character-number">
+                                05
+                            </span>
+
+                            <span class="character-card-name">
+                                Coming Soon
+                            </span>
+
+                            <span class="character-card-type">
+                                Animated Model
+                            </span>
+
+                        </div>
+
+
+                        <!-- Slot 6 -->
+
+                        <div class="character-card coming-soon">
+
+                            <span class="character-number">
+                                06
+                            </span>
+
+                            <span class="character-card-name">
+                                Coming Soon
+                            </span>
+
+                            <span class="character-card-type">
+                                Animated Model
+                            </span>
+
+                        </div>
+
+
+                        <!-- Slot 7 -->
+
+                        <div class="character-card coming-soon">
+
+                            <span class="character-number">
+                                07
+                            </span>
+
+                            <span class="character-card-name">
+                                Coming Soon
+                            </span>
+
+                            <span class="character-card-type">
+                                Animated Model
+                            </span>
+
+                        </div>
+
+
+                        <!-- Slot 8 -->
+
+                        <div class="character-card coming-soon">
+
+                            <span class="character-number">
+                                08
+                            </span>
+
+                            <span class="character-card-name">
+                                Coming Soon
+                            </span>
+
+                            <span class="character-card-type">
+                                Animated Model
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="graphics-tags tags">
+
+                        <span>Three.js</span>
+                        <span>WebGL</span>
+                        <span>GLB</span>
+                        <span>Skeletons</span>
+                        <span>Animation</span>
 
                     </div>
 
@@ -346,10 +590,19 @@
 
             </div>
 
+
+            <div
+                id="scene-message"
+                class="scene-message is-hidden"
+                aria-live="polite">
+            </div>
+
         </section>
 
 
-        <!-- Projects -->
+        <!-- ==========================================
+             Projects
+        =========================================== -->
 
         <section id="projects">
 
@@ -360,20 +613,30 @@
                 </h2>
 
                 <p class="section-subtitle">
-                    A collection of software, automation tools, and web applications
-                    I have built.
+                    A collection of software, automation tools, and interactive
+                    applications I have built.
                 </p>
 
 
                 <div class="project-grid">
 
+
                     <!-- DesktopSupportQC -->
 
                     <article class="project-card">
 
-                        <img
-                            src="images/qc.jpg"
-                            alt="DesktopSupportQC project preview">
+                        <div class="project-visual">
+
+                            <span class="project-visual-label">
+                                Enterprise Application
+                            </span>
+
+                            <strong>
+                                DesktopSupportQC
+                            </strong>
+
+                        </div>
+
 
                         <div class="project-content">
 
@@ -382,9 +645,10 @@
                             </h3>
 
                             <p>
-                                Automated workstation validation platform built in
-                                C# and WPF to streamline enterprise computer deployments.
+                                Automated workstation validation platform built to
+                                streamline enterprise computer deployments.
                             </p>
+
 
                             <div class="tags">
 
@@ -394,6 +658,7 @@
                                 <span>PowerShell</span>
 
                             </div>
+
 
                             <div class="project-buttons">
 
@@ -418,13 +683,22 @@
                     </article>
 
 
-                    <!-- AI Help Desk Assistant -->
+                    <!-- AI Help Desk -->
 
                     <article class="project-card">
 
-                        <img
-                            src="images/helpdesk.jpg"
-                            alt="AI Help Desk Assistant project preview">
+                        <div class="project-visual">
+
+                            <span class="project-visual-label">
+                                AI Application
+                            </span>
+
+                            <strong>
+                                AI Help Desk
+                            </strong>
+
+                        </div>
+
 
                         <div class="project-content">
 
@@ -433,10 +707,10 @@
                             </h3>
 
                             <p>
-                                AI-powered IT assistant built with FastAPI,
-                                JavaScript, and Ollama to answer common technical
-                                support questions.
+                                Local AI-powered IT assistant built to answer common
+                                support questions and maintain conversational history.
                             </p>
+
 
                             <div class="tags">
 
@@ -446,6 +720,7 @@
                                 <span>Ollama</span>
 
                             </div>
+
 
                             <div class="project-buttons">
 
@@ -471,9 +746,18 @@
 
                     <article class="project-card">
 
-                        <img
-                            src="images/solar.jpg"
-                            alt="Solar System project preview">
+                        <div class="project-visual">
+
+                            <span class="project-visual-label">
+                                Graphics Programming
+                            </span>
+
+                            <strong>
+                                Solar System
+                            </strong>
+
+                        </div>
+
 
                         <div class="project-content">
 
@@ -486,6 +770,7 @@
                                 Three.js and hosted through GitHub Pages.
                             </p>
 
+
                             <div class="tags">
 
                                 <span>Three.js</span>
@@ -494,6 +779,7 @@
                                 <span>CSS</span>
 
                             </div>
+
 
                             <div class="project-buttons">
 
@@ -518,8 +804,6 @@
                     </article>
 
 
-                    <!-- Future Project -->
-
                     <article class="project-card placeholder-card">
 
                         <div class="placeholder-visual">
@@ -541,8 +825,6 @@
                     </article>
 
 
-                    <!-- Future Project -->
-
                     <article class="project-card placeholder-card">
 
                         <div class="placeholder-visual">
@@ -563,8 +845,6 @@
 
                     </article>
 
-
-                    <!-- Future Project -->
 
                     <article class="project-card placeholder-card">
 
@@ -593,7 +873,9 @@
         </section>
 
 
-        <!-- About -->
+        <!-- ==========================================
+             About
+        =========================================== -->
 
         <section id="about">
 
@@ -604,14 +886,15 @@
                 </p>
 
                 <h2>
-                    Software shaped by real operational experience.
+                    Technical experience shaped by real operational work.
                 </h2>
 
                 <p>
-                    My background in enterprise IT gives me direct experience with
-                    the systems, devices, users, and processes software needs to
-                    support. I focus on building practical tools that reduce manual
-                    work, improve consistency, and remain maintainable after deployment.
+                    My background combines software development with hands-on
+                    experience supporting enterprise systems, devices, users, and
+                    large technology projects. I enjoy understanding how something
+                    works, identifying where it can be improved, and building a
+                    practical solution.
                 </p>
 
             </div>
@@ -619,7 +902,9 @@
         </section>
 
 
-        <!-- Skills -->
+        <!-- ==========================================
+             Skills
+        =========================================== -->
 
         <section id="skills">
 
@@ -630,7 +915,7 @@
                 </p>
 
                 <h2 class="section-title left-title">
-                    Technology I use
+                    Technology and experience
                 </h2>
 
 
@@ -639,11 +924,12 @@
                     <div>
 
                         <h3>
-                            Development
+                            Software Development
                         </h3>
 
                         <p>
-                            C#, .NET 8, WPF, Python, JavaScript, HTML, CSS
+                            Application development, object-oriented programming,
+                            APIs, debugging, testing, and software design.
                         </p>
 
                     </div>
@@ -656,7 +942,8 @@
                         </h3>
 
                         <p>
-                            PowerShell, Microsoft Graph, REST APIs, JSON
+                            Process automation, scripting, reporting, configuration,
+                            validation, and workflow improvement.
                         </p>
 
                     </div>
@@ -665,12 +952,12 @@
                     <div>
 
                         <h3>
-                            Enterprise IT
+                            Enterprise Technology
                         </h3>
 
                         <p>
-                            Intune, SCCM, Entra ID, application packaging,
-                            endpoint validation
+                            Endpoint management, application deployment, systems
+                            administration, cloud platforms, and infrastructure.
                         </p>
 
                     </div>
@@ -679,11 +966,12 @@
                     <div>
 
                         <h3>
-                            Data
+                            Graphics and Web
                         </h3>
 
                         <p>
-                            SQL, PostgreSQL, Power BI, reporting, and dashboard development
+                            Interactive web development, 3D rendering, animation,
+                            lighting, camera systems, and browser-based graphics.
                         </p>
 
                     </div>
@@ -695,7 +983,9 @@
         </section>
 
 
-        <!-- Contact -->
+        <!-- ==========================================
+             Contact
+        =========================================== -->
 
         <section id="contact">
 
@@ -706,25 +996,26 @@
                 </p>
 
                 <h2>
-                    Let’s build something useful.
+                    Let’s connect.
                 </h2>
 
                 <p>
-                    Reach out to discuss software engineering, automation,
-                    enterprise tooling, or opportunities to work together.
+                    I am interested in software engineering opportunities where I can
+                    contribute my technical experience, continue developing my
+                    skills, and grow with a company long term.
                 </p>
 
 
                 <div class="contact-buttons">
 
                     <a
-                        href="mailto:osmansafi1027@gmail.com"
+                        href="mailto:osmansabahsafi@gmail.com"
                         class="primary-button">
                         Email Me
                     </a>
 
                     <a
-                        href="https://www.linkedin.com/in/osman-safi-097a35204/"
+                        href="https://www.linkedin.com/in/osmansafi"
                         target="_blank"
                         rel="noopener noreferrer"
                         class="secondary-button">
@@ -740,7 +1031,9 @@
     </main>
 
 
-    <!-- Footer -->
+    <!-- ==========================================
+         Footer
+    =========================================== -->
 
     <footer>
 
@@ -760,7 +1053,7 @@
                 </a>
 
                 <a
-                    href="mailto:osmansafi1027@gmail.com">
+                    href="mailto:osmansabahsafi@gmail.com">
                     Email
                 </a>
 
@@ -771,7 +1064,9 @@
     </footer>
 
 
-    <!-- Three.js Import Map -->
+    <!-- ==========================================
+         Three.js
+    =========================================== -->
 
     <script type="importmap">
     {
@@ -782,8 +1077,6 @@
     }
     </script>
 
-
-    <!-- Main JavaScript -->
 
     <script
         type="module"
