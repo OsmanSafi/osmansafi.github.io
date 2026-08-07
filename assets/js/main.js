@@ -18,25 +18,48 @@ const viewer =
         "character-viewer"
     );
 
+
 const characterName =
     document.getElementById(
         "active-character-name"
     );
+
 
 const characterDescription =
     document.getElementById(
         "active-character-description"
     );
 
+
 const characterAction =
     document.getElementById(
         "character-action"
     );
 
+
+const animationName =
+    document.getElementById(
+        "active-animation-name"
+    );
+
+
 const sceneMessage =
     document.getElementById(
         "scene-message"
     );
+
+
+const loadingOverlay =
+    document.getElementById(
+        "model-loading"
+    );
+
+
+const loadingText =
+    document.getElementById(
+        "loading-text"
+    );
+
 
 const characterCards =
     document.querySelectorAll(
@@ -56,6 +79,11 @@ const reduceMotion =
 
 const CHARACTER_CONFIG = {
 
+
+    /* ------------------------------------------
+       Iron Man
+    ------------------------------------------ */
+
     ironman: {
 
         name:
@@ -67,8 +95,14 @@ const CHARACTER_CONFIG = {
         description:
             "Static model demonstrating real-time lighting, materials, camera controls, emissive effects, and interactive visual effects.",
 
-        action:
+        actionLabel:
             "Power Up",
+
+        idleAnimation:
+            null,
+
+        actionAnimation:
+            null,
 
         framing:
             "ironman"
@@ -76,19 +110,108 @@ const CHARACTER_CONFIG = {
     },
 
 
-    zero: {
+    /* ------------------------------------------
+       Trunks
+    ------------------------------------------ */
+
+    trunks: {
 
         name:
-            "Zero",
+            "Trunks",
 
         file:
-            "./models/zero.glb",
+            "./models/trunks.glb",
 
         description:
-            "Rigged character model demonstrating skeletal structure, bone transforms, procedural motion, and interactive posing.",
+            "Rigged animated character demonstrating skeletal animation, embedded GLB animation clips, lighting, and real-time playback.",
 
-        action:
-            "Sword Pose",
+        actionLabel:
+            "Power Up",
+
+        /*
+            Embedded animations found in
+            the uploaded Trunks GLB:
+
+            Golpe
+            Parado
+            Patada
+            Volando
+            Poder
+        */
+
+        idleAnimation:
+            "Parado",
+
+        actionAnimation:
+            "Poder",
+
+        framing:
+            "fullbody"
+
+    },
+
+
+    /* ------------------------------------------
+       Venom
+    ------------------------------------------ */
+
+    venom: {
+
+        name:
+            "Venom",
+
+        file:
+            "./models/venom.glb",
+
+        description:
+            "Fully rigged character featuring a large animation library with idle, movement, attack, crawling, swinging, and combat animations.",
+
+        actionLabel:
+            "Smash",
+
+        /*
+            Venom contains 190 embedded
+            animation clips.
+
+            We use Idle_C for the default
+            state and Smashing for interaction.
+        */
+
+        idleAnimation:
+            "Idle_C",
+
+        actionAnimation:
+            "Smashing",
+
+        framing:
+            "fullbody"
+
+    },
+
+
+    /* ------------------------------------------
+       Spartan
+    ------------------------------------------ */
+
+    spartan: {
+
+        name:
+            "Spartan",
+
+        file:
+            "./models/spartan.glb",
+
+        description:
+            "Rigged Halo Spartan model using an embedded animation clip, skeletal animation playback, real-time lighting, and camera controls.",
+
+        actionLabel:
+            "Replay Animation",
+
+        idleAnimation:
+            "Take 001",
+
+        actionAnimation:
+            "Take 001",
 
         framing:
             "fullbody"
@@ -112,10 +235,15 @@ const scene =
 
 const camera =
     new THREE.PerspectiveCamera(
-        30,
+
+        32,
+
         1,
+
         0.1,
+
         100
+
     );
 
 
@@ -126,9 +254,11 @@ const camera =
 const renderer =
     new THREE.WebGLRenderer({
 
-        antialias: true,
+        antialias:
+            true,
 
-        alpha: true,
+        alpha:
+            true,
 
         powerPreference:
             "high-performance"
@@ -205,7 +335,7 @@ const mainLight =
 
         0xffffff,
 
-        3
+        3.2
 
     );
 
@@ -237,9 +367,9 @@ const blueLight =
 
         0x4f8ef7,
 
-        10,
+        11,
 
-        15
+        16
 
     );
 
@@ -269,7 +399,7 @@ const goldLight =
 
         11,
 
-        15
+        16
 
     );
 
@@ -297,7 +427,7 @@ const rimLight =
 
         0xd6b36a,
 
-        1.5
+        1.6
 
     );
 
@@ -320,7 +450,7 @@ scene.add(
 );
 
 
-const attackLight =
+const effectLight =
     new THREE.PointLight(
 
         0x66ccff,
@@ -332,7 +462,7 @@ const attackLight =
     );
 
 
-attackLight.position.set(
+effectLight.position.set(
 
     0,
 
@@ -345,7 +475,7 @@ attackLight.position.set(
 
 scene.add(
 
-    attackLight
+    effectLight
 
 );
 
@@ -385,7 +515,7 @@ controls.autoRotate =
 
 
 controls.autoRotateSpeed =
-    0.7;
+    0.65;
 
 
 /* ==========================================
@@ -401,7 +531,7 @@ const clock =
 
 
 /* ==========================================
-   Model State
+   State
 ========================================== */
 
 let activeCharacterKey =
@@ -412,56 +542,104 @@ let activeModel =
     null;
 
 
+let activeMixer =
+    null;
+
+
+let activeAction =
+    null;
+
+
+let idleAction =
+    null;
+
+
 let activeMaterials =
     [];
 
 
-let basePosition =
-    new THREE.Vector3();
-
-
-let baseScale =
-    new THREE.Vector3(
-        1,
-        1,
-        1
-    );
-
-
-let baseRotation =
-    new THREE.Euler();
-
-
-const loadedModels =
-    new Map();
-
-
-/* ==========================================
-   Zero Rig
-========================================== */
-
-const zeroBones =
-    new Map();
-
-
-const zeroBaseRotations =
-    new Map();
-
-
-/* ==========================================
-   Action State
-========================================== */
-
-let actionActive =
+let ironManEffectActive =
     false;
 
 
-let actionStart =
+let ironManEffectStart =
     0;
 
 
-const ACTION_DURATION =
-    1.4;
+let ironManBasePosition =
+    new THREE.Vector3();
+
+
+let ironManBaseScale =
+    new THREE.Vector3();
+
+
+let ironManBaseRotation =
+    new THREE.Euler();
+
+
+const IRON_MAN_EFFECT_DURATION =
+    1.1;
+
+
+/*
+    Loaded models are cached so switching
+    back to a character does not download
+    the GLB again.
+*/
+
+const loadedCharacters =
+    new Map();
+
+
+/* ==========================================
+   Loading UI
+========================================== */
+
+function setLoading(
+    loading,
+    text = ""
+) {
+
+    if (!loadingOverlay) {
+
+        return;
+
+    }
+
+
+    if (loading) {
+
+        loadingOverlay
+            .classList
+            .remove(
+                "is-hidden"
+            );
+
+
+        if (
+            loadingText &&
+            text
+        ) {
+
+            loadingText.textContent =
+                text;
+
+        }
+
+    }
+
+    else {
+
+        loadingOverlay
+            .classList
+            .add(
+                "is-hidden"
+            );
+
+    }
+
+}
 
 
 /* ==========================================
@@ -525,10 +703,10 @@ function showMessage(
 
 
 /* ==========================================
-   Reset Raw Model Transform
+   Reset Model Transform
 ========================================== */
 
-function resetRawModel(
+function resetModelTransform(
     model
 ) {
 
@@ -568,7 +746,7 @@ function frameIronMan(
     model
 ) {
 
-    resetRawModel(
+    resetModelTransform(
         model
     );
 
@@ -592,73 +770,77 @@ function frameIronMan(
         );
 
 
-    /*
-        Preserve the original Iron Man
-        normalization behavior.
-    */
-
     model.position.sub(
         center
     );
 
 
-    const largestDimension =
+    const largest =
         Math.max(
+
             size.x,
+
             size.y,
+
             size.z
+
         ) || 1;
 
 
-    const scale =
-        5.3 /
-        largestDimension;
-
-
     model.scale.setScalar(
-        scale
+
+        5.3 /
+        largest
+
     );
 
+
+    /*
+        Preserve the Iron Man framing
+        that already worked well.
+    */
 
     model.position.set(
+
         0,
+
         -3.55,
+
         0
+
     );
-
-
-    model.rotation.y =
-        0;
 
 
     camera.position.set(
+
         0,
+
         1.15,
+
         3
+
     );
 
 
     controls.target.set(
+
         0,
+
         1,
+
         0
+
     );
 
 
     controls.minPolarAngle =
-        Math.PI / 2.7;
+        Math.PI /
+        2.7;
 
 
     controls.maxPolarAngle =
-        Math.PI / 1.8;
-
-
-    controls.minAzimuthAngle =
-        -Infinity;
-
-
-    controls.maxAzimuthAngle =
-        Infinity;
+        Math.PI /
+        1.8;
 
 
     controls.update();
@@ -667,24 +849,20 @@ function frameIronMan(
 
 
 /* ==========================================
-   Full Body Framing
+   Automatic Full-Body Framing
 ========================================== */
 
 function frameFullBody(
     model
 ) {
 
-    /*
-        Start clean.
-    */
-
-    resetRawModel(
+    resetModelTransform(
         model
     );
 
 
     /*
-        First calculate the true model bounds.
+        Determine original dimensions.
     */
 
     let box =
@@ -694,25 +872,29 @@ function frameFullBody(
             );
 
 
-    let size =
+    const originalSize =
         box.getSize(
             new THREE.Vector3()
         );
 
 
     /*
-        Scale Zero to a predictable height.
+        Normalize every character to a
+        predictable visible height.
     */
 
     const targetHeight =
-        3.5;
+        3.6;
 
 
     const scale =
         targetHeight /
         Math.max(
-            size.y,
+
+            originalSize.y,
+
             0.0001
+
         );
 
 
@@ -727,7 +909,7 @@ function frameFullBody(
 
 
     /*
-        Recalculate after scaling.
+        Calculate the scaled bounds.
     */
 
     box =
@@ -737,12 +919,6 @@ function frameFullBody(
             );
 
 
-    size =
-        box.getSize(
-            new THREE.Vector3()
-        );
-
-
     const center =
         box.getCenter(
             new THREE.Vector3()
@@ -750,12 +926,11 @@ function frameFullBody(
 
 
     /*
-        This is the important change.
+        Translate the actual visible geometry
+        to world origin.
 
-        We move the complete bounding box
-        to the center of the Three.js world,
-        regardless of where Sketchfab stored
-        the GLB origin.
+        This avoids relying on inconsistent
+        Sketchfab model origins.
     */
 
     model.position.x -=
@@ -776,53 +951,42 @@ function frameFullBody(
 
 
     /*
-        Camera now looks directly at
-        the centered full character.
+        Full-body camera.
     */
 
     camera.position.set(
+
         0,
+
         0,
-        6
+
+        6.3
+
     );
 
 
     controls.target.set(
+
         0,
+
         0,
+
         0
+
     );
 
 
     controls.minPolarAngle =
-        Math.PI * 0.38;
+        Math.PI *
+        0.35;
 
 
     controls.maxPolarAngle =
-        Math.PI * 0.62;
-
-
-    controls.minAzimuthAngle =
-        -Math.PI;
-
-
-    controls.maxAzimuthAngle =
-        Math.PI;
+        Math.PI *
+        0.65;
 
 
     controls.update();
-
-
-    console.log(
-        "Full-body model size:",
-        size
-    );
-
-
-    console.log(
-        "Full-body model center:",
-        center
-    );
 
 }
 
@@ -862,7 +1026,9 @@ function prepareMaterials(
                 Array.isArray(
                     child.material
                 )
+
                     ? child.material
+
                     : [child.material];
 
 
@@ -899,123 +1065,106 @@ function prepareMaterials(
 
 
 /* ==========================================
-   Zero Rig Preparation
+   Animation Lookup
 ========================================== */
 
-function prepareZeroRig(
-    model
+function findAnimation(
+    animations,
+    desiredName
 ) {
-
-    zeroBones.clear();
-
-
-    zeroBaseRotations.clear();
-
-
-    model.traverse(
-
-        child => {
-
-            if (!child.isBone) {
-
-                return;
-
-            }
-
-
-            zeroBones.set(
-
-                child.name,
-
-                child
-
-            );
-
-
-            zeroBaseRotations.set(
-
-                child.name,
-
-                child.quaternion.clone()
-
-            );
-
-        }
-
-    );
-
-
-    console.log(
-
-        "Zero bones:",
-
-        [...zeroBones.keys()]
-
-    );
-
-}
-
-
-/* ==========================================
-   Reset Zero Pose
-========================================== */
-
-function resetZeroPose() {
-
-    zeroBaseRotations.forEach(
-
-        (
-            rotation,
-            name
-        ) => {
-
-            const bone =
-                zeroBones.get(
-                    name
-                );
-
-
-            if (bone) {
-
-                bone.quaternion.copy(
-                    rotation
-                );
-
-            }
-
-        }
-
-    );
-
-}
-
-
-/* ==========================================
-   Rotate Zero Bone
-========================================== */
-
-function rotateZeroBone(
-    name,
-    x = 0,
-    y = 0,
-    z = 0
-) {
-
-    const bone =
-        zeroBones.get(
-            name
-        );
-
-
-    const original =
-        zeroBaseRotations.get(
-            name
-        );
-
 
     if (
-        !bone ||
-        !original
+        !desiredName ||
+        animations.length === 0
+    ) {
+
+        return null;
+
+    }
+
+
+    /*
+        First try exact match.
+    */
+
+    let clip =
+        THREE.AnimationClip
+            .findByName(
+
+                animations,
+
+                desiredName
+
+            );
+
+
+    if (clip) {
+
+        return clip;
+
+    }
+
+
+    /*
+        Then try case-insensitive match.
+    */
+
+    const desired =
+        desiredName
+            .toLowerCase();
+
+
+    clip =
+        animations.find(
+
+            animation =>
+                animation.name
+                    .toLowerCase() ===
+                desired
+
+        );
+
+
+    return (
+        clip ||
+        null
+    );
+
+}
+
+
+/* ==========================================
+   Stop Current Animation
+========================================== */
+
+function stopAnimations() {
+
+    if (activeMixer) {
+
+        activeMixer.stopAllAction();
+
+    }
+
+
+    activeAction =
+        null;
+
+
+    idleAction =
+        null;
+
+}
+
+
+/* ==========================================
+   Play Idle Animation
+========================================== */
+
+function playIdleAnimation() {
+
+    if (
+        !activeMixer ||
+        !activeCharacterKey
     ) {
 
         return;
@@ -1023,27 +1172,524 @@ function rotateZeroBone(
     }
 
 
-    const offset =
-        new THREE.Quaternion()
-            .setFromEuler(
+    const data =
+        loadedCharacters.get(
+            activeCharacterKey
+        );
 
-                new THREE.Euler(
-                    x,
-                    y,
-                    z,
-                    "XYZ"
-                )
+
+    const config =
+        CHARACTER_CONFIG[
+            activeCharacterKey
+        ];
+
+
+    if (
+        !data ||
+        !config
+    ) {
+
+        return;
+
+    }
+
+
+    const clip =
+        findAnimation(
+
+            data.animations,
+
+            config.idleAnimation
+
+        );
+
+
+    if (!clip) {
+
+        animationName.textContent =
+            "No Idle Animation";
+
+        return;
+
+    }
+
+
+    if (activeAction) {
+
+        activeAction.fadeOut(
+            0.2
+        );
+
+    }
+
+
+    idleAction =
+        activeMixer.clipAction(
+            clip
+        );
+
+
+    idleAction.reset();
+
+
+    idleAction.setLoop(
+
+        THREE.LoopRepeat,
+
+        Infinity
+
+    );
+
+
+    idleAction.fadeIn(
+        0.25
+    );
+
+
+    idleAction.play();
+
+
+    activeAction =
+        idleAction;
+
+
+    animationName.textContent =
+        clip.name;
+
+}
+
+
+/* ==========================================
+   Play Action Animation
+========================================== */
+
+function playCharacterAction() {
+
+    if (!activeModel) {
+
+        return;
+
+    }
+
+
+    /*
+        Iron Man uses procedural effects
+        because the model has no clips.
+    */
+
+    if (
+        activeCharacterKey ===
+        "ironman"
+    ) {
+
+        ironManEffectActive =
+            true;
+
+
+        ironManEffectStart =
+            clock.elapsedTime;
+
+
+        controls.autoRotate =
+            false;
+
+
+        showMessage(
+            "Iron Man power-up activated."
+        );
+
+
+        return;
+
+    }
+
+
+    const config =
+        CHARACTER_CONFIG[
+            activeCharacterKey
+        ];
+
+
+    const data =
+        loadedCharacters.get(
+            activeCharacterKey
+        );
+
+
+    if (
+        !config ||
+        !data ||
+        !activeMixer
+    ) {
+
+        return;
+
+    }
+
+
+    const clip =
+        findAnimation(
+
+            data.animations,
+
+            config.actionAnimation
+
+        );
+
+
+    if (!clip) {
+
+        showMessage(
+            "No action animation found."
+        );
+
+        return;
+
+    }
+
+
+    /*
+        Fade out current animation.
+    */
+
+    if (activeAction) {
+
+        activeAction.fadeOut(
+            0.2
+        );
+
+    }
+
+
+    const action =
+        activeMixer.clipAction(
+            clip
+        );
+
+
+    action.reset();
+
+
+    /*
+        Spartan only has one animation.
+        Let it play normally and repeat.
+    */
+
+    if (
+        activeCharacterKey ===
+        "spartan"
+    ) {
+
+        action.setLoop(
+
+            THREE.LoopRepeat,
+
+            Infinity
+
+        );
+
+    }
+
+    else {
+
+        action.setLoop(
+
+            THREE.LoopOnce,
+
+            1
+
+        );
+
+
+        action.clampWhenFinished =
+            true;
+
+    }
+
+
+    action.fadeIn(
+        0.2
+    );
+
+
+    action.play();
+
+
+    activeAction =
+        action;
+
+
+    animationName.textContent =
+        clip.name;
+
+
+    showMessage(
+
+        `${config.name}: ${clip.name}`
+
+    );
+
+
+    /*
+        Return to idle when a one-time
+        action finishes.
+    */
+
+    if (
+        activeCharacterKey !==
+        "spartan"
+    ) {
+
+        const onFinished =
+            event => {
+
+                if (
+                    event.action !==
+                    action
+                ) {
+
+                    return;
+
+                }
+
+
+                activeMixer.removeEventListener(
+
+                    "finished",
+
+                    onFinished
+
+                );
+
+
+                playIdleAnimation();
+
+            };
+
+
+        activeMixer.addEventListener(
+
+            "finished",
+
+            onFinished
+
+        );
+
+    }
+
+}
+
+
+/* ==========================================
+   Activate Character
+========================================== */
+
+function activateCharacter(
+    key,
+    data
+) {
+
+    const config =
+        CHARACTER_CONFIG[
+            key
+        ];
+
+
+    if (
+        !config ||
+        !data
+    ) {
+
+        return;
+
+    }
+
+
+    /*
+        Remove previous model.
+    */
+
+    if (activeModel) {
+
+        scene.remove(
+            activeModel
+        );
+
+    }
+
+
+    stopAnimations();
+
+
+    ironManEffectActive =
+        false;
+
+
+    effectLight.intensity =
+        0;
+
+
+    activeCharacterKey =
+        key;
+
+
+    activeModel =
+        data.model;
+
+
+    scene.add(
+        activeModel
+    );
+
+
+    /*
+        Frame the character.
+    */
+
+    if (
+        config.framing ===
+        "ironman"
+    ) {
+
+        frameIronMan(
+            activeModel
+        );
+
+    }
+
+    else {
+
+        frameFullBody(
+            activeModel
+        );
+
+    }
+
+
+    prepareMaterials(
+        activeModel
+    );
+
+
+    /*
+        Store Iron Man starting position
+        for the procedural effect.
+    */
+
+    if (
+        key ===
+        "ironman"
+    ) {
+
+        ironManBasePosition.copy(
+            activeModel.position
+        );
+
+
+        ironManBaseScale.copy(
+            activeModel.scale
+        );
+
+
+        ironManBaseRotation.copy(
+            activeModel.rotation
+        );
+
+    }
+
+
+    /*
+        AnimationMixer for animated models.
+    */
+
+    if (
+        data.animations.length > 0
+    ) {
+
+        activeMixer =
+            new THREE.AnimationMixer(
+                activeModel
+            );
+
+    }
+
+    else {
+
+        activeMixer =
+            null;
+
+    }
+
+
+    /*
+        Update UI.
+    */
+
+    characterName.textContent =
+        config.name;
+
+
+    characterDescription.textContent =
+        config.description;
+
+
+    characterAction.textContent =
+        config.actionLabel;
+
+
+    characterCards.forEach(
+
+        card => {
+
+            card.classList.toggle(
+
+                "active",
+
+                card.dataset.character ===
+                    key
 
             );
 
+        }
 
-    bone.quaternion
-        .copy(
-            original
-        )
-        .multiply(
-            offset
-        );
+    );
+
+
+    controls.autoRotate =
+        !reduceMotion;
+
+
+    /*
+        Play idle animation.
+    */
+
+    if (
+        config.idleAnimation &&
+        activeMixer
+    ) {
+
+        playIdleAnimation();
+
+    }
+
+    else {
+
+        animationName.textContent =
+            "Procedural Effects";
+
+    }
+
+
+    setLoading(
+        false
+    );
+
+
+    showMessage(
+
+        `${config.name} selected.`
+
+    );
 
 }
 
@@ -1057,7 +1703,9 @@ function loadCharacter(
 ) {
 
     const config =
-        CHARACTER_CONFIG[key];
+        CHARACTER_CONFIG[
+            key
+        ];
 
 
     if (!config) {
@@ -1067,17 +1715,12 @@ function loadCharacter(
     }
 
 
-    showMessage(
-
-        `Loading ${config.name}...`,
-
-        0
-
-    );
-
+    /*
+        Already downloaded.
+    */
 
     if (
-        loadedModels.has(
+        loadedCharacters.has(
             key
         )
     ) {
@@ -1086,7 +1729,7 @@ function loadCharacter(
 
             key,
 
-            loadedModels.get(
+            loadedCharacters.get(
                 key
             )
 
@@ -1094,6 +1737,36 @@ function loadCharacter(
 
 
         return;
+
+    }
+
+
+    setLoading(
+
+        true,
+
+        `Loading ${config.name}...`
+
+    );
+
+
+    /*
+        Venom is a large model,
+        so it may take noticeably longer.
+    */
+
+    if (
+        key ===
+        "venom"
+    ) {
+
+        showMessage(
+
+            "Venom is a large model and may take a moment to load.",
+
+            4500
+
+        );
 
     }
 
@@ -1116,20 +1789,27 @@ function loadCharacter(
 
                 `${config.name} animations:`,
 
-                gltf.animations
+                gltf.animations.map(
+                    clip =>
+                        clip.name
+                )
 
             );
 
 
-            const model =
-                gltf.scene;
-
-
-            loadedModels.set(
+            loadedCharacters.set(
 
                 key,
 
-                model
+                {
+
+                    model:
+                        gltf.scene,
+
+                    animations:
+                        gltf.animations
+
+                }
 
             );
 
@@ -1138,14 +1818,49 @@ function loadCharacter(
 
                 key,
 
-                model
+                loadedCharacters.get(
+                    key
+                )
 
             );
 
         },
 
 
-        undefined,
+        progress => {
+
+            /*
+                Display loading percentage when
+                the server reports total size.
+            */
+
+            if (
+                progress.total >
+                0
+            ) {
+
+                const percent =
+                    Math.round(
+
+                        (
+                            progress.loaded /
+                            progress.total
+                        ) *
+                        100
+
+                    );
+
+
+                if (loadingText) {
+
+                    loadingText.textContent =
+                        `Loading ${config.name} — ${percent}%`;
+
+                }
+
+            }
+
+        },
 
 
         error => {
@@ -1159,9 +1874,14 @@ function loadCharacter(
             );
 
 
+            setLoading(
+                false
+            );
+
+
             showMessage(
 
-                `${config.name} could not load.`,
+                `${config.name} could not be loaded. Check the model filename.`,
 
                 0
 
@@ -1175,164 +1895,7 @@ function loadCharacter(
 
 
 /* ==========================================
-   Activate Character
-========================================== */
-
-function activateCharacter(
-    key,
-    model
-) {
-
-    const config =
-        CHARACTER_CONFIG[key];
-
-
-    /*
-        Remove previous character.
-    */
-
-    if (activeModel) {
-
-        scene.remove(
-            activeModel
-        );
-
-    }
-
-
-    actionActive =
-        false;
-
-
-    attackLight.intensity =
-        0;
-
-
-    activeCharacterKey =
-        key;
-
-
-    activeModel =
-        model;
-
-
-    scene.add(
-        activeModel
-    );
-
-
-    /*
-        Character-specific framing.
-    */
-
-    if (
-        config.framing ===
-        "ironman"
-    ) {
-
-        frameIronMan(
-            activeModel
-        );
-
-    }
-
-
-    if (
-        config.framing ===
-        "fullbody"
-    ) {
-
-        frameFullBody(
-            activeModel
-        );
-
-    }
-
-
-    prepareMaterials(
-        activeModel
-    );
-
-
-    if (
-        key === "zero"
-    ) {
-
-        prepareZeroRig(
-            activeModel
-        );
-
-
-        resetZeroPose();
-
-    }
-
-
-    /*
-        Capture finished transform as
-        animation starting point.
-    */
-
-    basePosition.copy(
-        activeModel.position
-    );
-
-
-    baseScale.copy(
-        activeModel.scale
-    );
-
-
-    baseRotation.copy(
-        activeModel.rotation
-    );
-
-
-    controls.autoRotate =
-        !reduceMotion;
-
-
-    characterName.textContent =
-        config.name;
-
-
-    characterDescription.textContent =
-        config.description;
-
-
-    characterAction.textContent =
-        config.action;
-
-
-    characterCards.forEach(
-
-        card => {
-
-            card.classList.toggle(
-
-                "active",
-
-                card.dataset.character ===
-                    key
-
-            );
-
-        }
-
-    );
-
-
-    showMessage(
-
-        `${config.name} selected.`
-
-    );
-
-}
-
-
-/* ==========================================
-   Character Selector
+   Character Buttons
 ========================================== */
 
 characterCards.forEach(
@@ -1345,8 +1908,22 @@ characterCards.forEach(
 
             () => {
 
+                const key =
+                    card.dataset.character;
+
+
+                if (
+                    key ===
+                    activeCharacterKey
+                ) {
+
+                    return;
+
+                }
+
+
                 loadCharacter(
-                    card.dataset.character
+                    key
                 );
 
             }
@@ -1366,97 +1943,73 @@ characterAction.addEventListener(
 
     "click",
 
-    () => {
-
-        if (!activeModel) {
-
-            return;
-
-        }
-
-
-        actionActive =
-            true;
-
-
-        actionStart =
-            clock.elapsedTime;
-
-
-        controls.autoRotate =
-            false;
-
-
-        if (
-            activeCharacterKey ===
-            "ironman"
-        ) {
-
-            showMessage(
-                "Iron Man power-up activated."
-            );
-
-        }
-
-
-        if (
-            activeCharacterKey ===
-            "zero"
-        ) {
-
-            showMessage(
-                "Zero sword pose activated."
-            );
-
-        }
-
-    }
+    playCharacterAction
 
 );
 
 
 /* ==========================================
-   Iron Man Animation
+   Iron Man Effect
 ========================================== */
 
 function animateIronMan(
-    elapsed,
-    progress
+    elapsed
 ) {
 
-    if (!actionActive) {
+    if (
+        !activeModel ||
+        activeCharacterKey !==
+        "ironman"
+    ) {
+
+        return;
+
+    }
+
+
+    /*
+        Normal floating.
+    */
+
+    if (
+        !ironManEffectActive &&
+        !reduceMotion
+    ) {
 
         activeModel.position.y =
-            basePosition.y +
+            ironManBasePosition.y +
             Math.sin(
-                elapsed * 1.2
+
+                elapsed *
+                1.2
+
             ) *
             0.025;
 
     }
 
 
+    /*
+        Normal emissive pulse.
+    */
+
     const normalGlow =
         1.3 +
         Math.sin(
-            elapsed * 2.2
+
+            elapsed *
+            2.2
+
         ) *
         0.35;
 
 
-    const strength =
-        Math.sin(
-            progress *
-            Math.PI
-        );
-
-
     activeMaterials.forEach(
 
-        info => {
+        data => {
 
             if (
-                !info.material.emissive
+                !data.material.emissive
             ) {
 
                 return;
@@ -1464,17 +2017,19 @@ function animateIronMan(
             }
 
 
-            info.material
+            data.material
                 .emissiveIntensity =
 
-                actionActive
+                ironManEffectActive
 
-                    ? 4 +
-                        strength * 2
+                    ? 4.5
 
                     : Math.max(
-                        info.emissiveIntensity,
+
+                        data.emissiveIntensity,
+
                         normalGlow
+
                     );
 
         }
@@ -1482,17 +2037,49 @@ function animateIronMan(
     );
 
 
-    if (!actionActive) {
+    if (
+        !ironManEffectActive
+    ) {
 
         return;
 
     }
 
 
-    activeModel.rotation.z =
-        baseRotation.z +
+    const elapsedEffect =
+        elapsed -
+        ironManEffectStart;
+
+
+    const progress =
+        THREE.MathUtils.clamp(
+
+            elapsedEffect /
+            IRON_MAN_EFFECT_DURATION,
+
+            0,
+
+            1
+
+        );
+
+
+    const strength =
         Math.sin(
-            elapsed * 35
+
+            progress *
+            Math.PI
+
+        );
+
+
+    activeModel.rotation.z =
+        ironManBaseRotation.z +
+        Math.sin(
+
+            elapsed *
+            35
+
         ) *
         0.018 *
         strength;
@@ -1500,214 +2087,71 @@ function animateIronMan(
 
     activeModel.scale.set(
 
-        baseScale.x *
-            (1 + strength * 0.035),
+        ironManBaseScale.x *
+        (
+            1 +
+            strength *
+            0.035
+        ),
 
-        baseScale.y *
-            (1 + strength * 0.035),
+        ironManBaseScale.y *
+        (
+            1 +
+            strength *
+            0.035
+        ),
 
-        baseScale.z *
-            (1 + strength * 0.035)
+        ironManBaseScale.z *
+        (
+            1 +
+            strength *
+            0.035
+        )
 
     );
 
 
     activeModel.position.z =
-        basePosition.z +
+        ironManBasePosition.z +
         strength *
         0.08;
 
 
-    attackLight.intensity =
+    effectLight.intensity =
         strength *
         35;
 
-}
-
-
-/* ==========================================
-   Zero Animation
-========================================== */
-
-function animateZero(
-    elapsed,
-    progress
-) {
-
-    /*
-        Gentle idle rotation remains handled
-        by OrbitControls.
-
-        Keep Zero's centered root transform
-        stable so he doesn't disappear again.
-    */
-
-    resetZeroPose();
-
-
-    /*
-        Slight head movement when idle.
-    */
-
-    if (!actionActive) {
-
-        rotateZeroBone(
-
-            "Bip Head_033",
-
-            0,
-
-            Math.sin(
-                elapsed * 0.8
-            ) *
-            0.05,
-
-            0
-
-        );
-
-
-        return;
-
-    }
-
-
-    const strength =
-        Math.sin(
-            progress *
-            Math.PI
-        );
-
-
-    /*
-        Look toward viewer.
-    */
-
-    rotateZeroBone(
-
-        "Bip Neck_032",
-
-        0,
-
-        -0.20 *
-        strength,
-
-        0
-
-    );
-
-
-    rotateZeroBone(
-
-        "Bip Head_033",
-
-        0,
-
-        -0.25 *
-        strength,
-
-        0
-
-    );
-
-
-    /*
-        Raise sword arm.
-    */
-
-    rotateZeroBone(
-
-        "Bip R UpperArm_042",
-
-        -0.95 *
-        strength,
-
-        0.15 *
-        strength,
-
-        -0.42 *
-        strength
-
-    );
-
-
-    rotateZeroBone(
-
-        "Bip R Forearm_043",
-
-        -0.70 *
-        strength,
-
-        0,
-
-        0.15 *
-        strength
-
-    );
-
-
-    rotateZeroBone(
-
-        "Bip R Hand_044",
-
-        0,
-
-        0,
-
-        -0.18 *
-        strength
-
-    );
-
-}
-
-
-/* ==========================================
-   Finish Action
-========================================== */
-
-function finishAction() {
-
-    actionActive =
-        false;
-
-
-    if (!activeModel) {
-
-        return;
-
-    }
-
-
-    activeModel.position.copy(
-        basePosition
-    );
-
-
-    activeModel.scale.copy(
-        baseScale
-    );
-
-
-    activeModel.rotation.copy(
-        baseRotation
-    );
-
-
-    attackLight.intensity =
-        0;
-
-
-    controls.autoRotate =
-        !reduceMotion;
-
 
     if (
-        activeCharacterKey ===
-        "zero"
+        progress >=
+        1
     ) {
 
-        resetZeroPose();
+        ironManEffectActive =
+            false;
+
+
+        activeModel.position.copy(
+            ironManBasePosition
+        );
+
+
+        activeModel.scale.copy(
+            ironManBaseScale
+        );
+
+
+        activeModel.rotation.copy(
+            ironManBaseRotation
+        );
+
+
+        effectLight.intensity =
+            0;
+
+
+        controls.autoRotate =
+            !reduceMotion;
 
     }
 
@@ -1726,15 +2170,21 @@ function resizeViewer() {
 
     const width =
         Math.max(
+
             rectangle.width,
+
             1
+
         );
 
 
     const height =
         Math.max(
+
             rectangle.height,
+
             1
+
         );
 
 
@@ -1784,83 +2234,50 @@ function animate() {
     );
 
 
-    clock.getDelta();
+    const delta =
+        clock.getDelta();
 
 
     const elapsed =
         clock.elapsedTime;
 
 
-    if (activeModel) {
+    /*
+        Update currently active embedded
+        animation.
+    */
 
-        let progress =
-            0;
+    if (
+        activeMixer &&
+        !reduceMotion
+    ) {
 
-
-        if (actionActive) {
-
-            progress =
-                THREE.MathUtils.clamp(
-
-                    (
-                        elapsed -
-                        actionStart
-                    ) /
-                    ACTION_DURATION,
-
-                    0,
-
-                    1
-
-                );
-
-        }
-
-
-        if (
-            activeCharacterKey ===
-            "ironman"
-        ) {
-
-            animateIronMan(
-                elapsed,
-                progress
-            );
-
-        }
-
-
-        if (
-            activeCharacterKey ===
-            "zero"
-        ) {
-
-            animateZero(
-                elapsed,
-                progress
-            );
-
-        }
-
-
-        if (
-            actionActive &&
-            progress >= 1
-        ) {
-
-            finishAction();
-
-        }
+        activeMixer.update(
+            delta
+        );
 
     }
+
+
+    /*
+        Iron Man is procedural because
+        his model has no animations.
+    */
+
+    animateIronMan(
+        elapsed
+    );
 
 
     controls.update();
 
 
     renderer.render(
+
         scene,
+
         camera
+
     );
 
 }

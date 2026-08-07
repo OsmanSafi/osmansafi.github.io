@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
 
     <meta
@@ -12,7 +13,9 @@
         name="description"
         content="Osman Safi's portfolio featuring software development, automation, enterprise technology, and interactive graphics programming.">
 
-    <title>Osman Safi | Software Engineering Portfolio</title>
+    <title>
+        Osman Safi | Software Engineering Portfolio
+    </title>
 
     <link
         rel="stylesheet"
@@ -30,10 +33,12 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
+
 </head>
 
 
 <body>
+
 
     <!-- ==========================================
          Navigation
@@ -46,6 +51,7 @@
             class="logo">
             Osman Safi
         </a>
+
 
         <ul class="nav-links">
 
@@ -113,24 +119,32 @@
                         IT Systems Analyst • Software Development • Automation
                     </p>
 
+
                     <h1>
                         Building software that solves real problems.
                     </h1>
 
+
                     <p class="description">
+
                         I currently work as an IT systems analyst, building tools,
                         automating processes, supporting enterprise technology, and
                         solving problems that affect real users. My experience spans
                         software development, systems, infrastructure, and project
                         work, which allows me to approach challenges from more than
                         one perspective.
+
                     </p>
 
+
                     <p class="hero-goal">
+
                         I am looking for a software engineering role where a company
                         can make full use of my skills, give me room to keep growing,
                         and provide a long-term fit for my career and my family.
+
                     </p>
+
 
                     <div class="hero-buttons">
 
@@ -139,6 +153,7 @@
                             class="primary-button">
                             View My Work
                         </a>
+
 
                         <a
                             href="#about"
@@ -172,27 +187,35 @@
 
             <div class="container">
 
+
                 <div class="featured-header">
 
                     <p class="section-label">
                         Featured Project
                     </p>
 
+
                     <h2>
                         DesktopSupportQC
                     </h2>
 
+
                     <p class="featured-description">
+
                         DesktopSupportQC is an enterprise desktop application
                         designed to automate workstation validation after imaging.
                         It helps technicians confirm that devices are properly
                         configured before they are delivered to users.
+
                     </p>
+
 
                     <div class="tags centered-tags">
 
                         <span>C#</span>
+
                         <span>.NET 8</span>
+
                         <span>WPF</span>
 
                     </div>
@@ -214,6 +237,7 @@
 
 
                 <div class="project-highlights">
+
 
                     <div class="highlight">
 
@@ -266,6 +290,7 @@
 
                     </div>
 
+
                 </div>
 
 
@@ -278,6 +303,7 @@
                         class="primary-button">
                         Watch Demo
                     </a>
+
 
                     <a
                         href="https://github.com/OsmanSafi"
@@ -313,15 +339,19 @@
                     Graphics Programming
                 </p>
 
+
                 <h2>
                     Interactive 3D Experiences
                 </h2>
 
+
                 <p>
+
                     My graphics programming experience includes real-time
                     rendering, lighting, animation, camera systems, 3D
                     transformations, and integrating models into interactive
                     applications.
+
                 </p>
 
             </div>
@@ -331,10 +361,11 @@
 
 
                 <!-- ==================================
-                     Active Character Stage
+                     Active Character
                 =================================== -->
 
                 <div class="character-stage">
+
 
                     <div class="stage-header">
 
@@ -368,12 +399,27 @@
                     <div class="stage-floor"></div>
 
 
+                    <div
+                        id="model-loading"
+                        class="model-loading is-hidden">
+
+                        <span class="loading-spinner"></span>
+
+                        <span id="loading-text">
+                            Loading Model
+                        </span>
+
+                    </div>
+
+
                     <div class="stage-footer">
 
                         <p id="active-character-description">
+
                             Static model demonstrating real-time lighting,
-                            materials, camera controls, and interactive
-                            visual effects.
+                            materials, camera control, and interactive visual
+                            effects.
+
                         </p>
 
 
@@ -381,7 +427,9 @@
                             id="character-action"
                             class="scene-button"
                             type="button">
+
                             Power Up
+
                         </button>
 
                     </div>
@@ -390,10 +438,11 @@
 
 
                 <!-- ==================================
-                     Model Library
+                     Character Selection
                 =================================== -->
 
                 <div class="character-selection">
+
 
                     <div class="selection-heading">
 
@@ -401,13 +450,18 @@
                             Model Library
                         </p>
 
+
                         <h3>
                             Select a Character
                         </h3>
 
+
                         <p>
-                            Each model is used to demonstrate different graphics,
-                            animation, and interaction techniques.
+
+                            Select a model to load it into the scene.
+                            Characters with embedded animations will play
+                            animation clips directly from their GLB files.
+
                         </p>
 
                     </div>
@@ -416,7 +470,7 @@
                     <div class="character-grid">
 
 
-                        <!-- Slot 1 -->
+                        <!-- Iron Man -->
 
                         <button
                             class="character-card active"
@@ -438,140 +492,88 @@
                         </button>
 
 
-                        <!-- Slot 2 -->
+                        <!-- Trunks -->
 
                         <button
                             class="character-card"
                             type="button"
-                            data-character="zero">
+                            data-character="trunks">
 
                             <span class="character-number">
                                 02
                             </span>
 
                             <span class="character-card-name">
-                                Zero
+                                Trunks
                             </span>
 
                             <span class="character-card-type">
-                                Rigged Character
+                                5 Animations
                             </span>
 
                         </button>
 
 
-                        <!-- Slot 3 -->
+                        <!-- Venom -->
 
-                        <div class="character-card coming-soon">
+                        <button
+                            class="character-card"
+                            type="button"
+                            data-character="venom">
 
                             <span class="character-number">
                                 03
                             </span>
 
                             <span class="character-card-name">
-                                Coming Soon
+                                Venom
                             </span>
 
                             <span class="character-card-type">
-                                Animated Model
+                                190 Animations
                             </span>
 
-                        </div>
+                        </button>
 
 
-                        <!-- Slot 4 -->
+                        <!-- Spartan -->
 
-                        <div class="character-card coming-soon">
+                        <button
+                            class="character-card"
+                            type="button"
+                            data-character="spartan">
 
                             <span class="character-number">
                                 04
                             </span>
 
                             <span class="character-card-name">
-                                Coming Soon
+                                Spartan
                             </span>
 
                             <span class="character-card-type">
                                 Animated Model
                             </span>
 
-                        </div>
+                        </button>
 
 
-                        <!-- Slot 5 -->
-
-                        <div class="character-card coming-soon">
-
-                            <span class="character-number">
-                                05
-                            </span>
-
-                            <span class="character-card-name">
-                                Coming Soon
-                            </span>
-
-                            <span class="character-card-type">
-                                Animated Model
-                            </span>
-
-                        </div>
+                    </div>
 
 
-                        <!-- Slot 6 -->
+                    <!-- ==================================
+                         Current Animation
+                    =================================== -->
 
-                        <div class="character-card coming-soon">
+                    <div class="animation-panel">
 
-                            <span class="character-number">
-                                06
-                            </span>
+                        <span class="animation-panel-label">
+                            Animation
+                        </span>
 
-                            <span class="character-card-name">
-                                Coming Soon
-                            </span>
-
-                            <span class="character-card-type">
-                                Animated Model
-                            </span>
-
-                        </div>
-
-
-                        <!-- Slot 7 -->
-
-                        <div class="character-card coming-soon">
-
-                            <span class="character-number">
-                                07
-                            </span>
-
-                            <span class="character-card-name">
-                                Coming Soon
-                            </span>
-
-                            <span class="character-card-type">
-                                Animated Model
-                            </span>
-
-                        </div>
-
-
-                        <!-- Slot 8 -->
-
-                        <div class="character-card coming-soon">
-
-                            <span class="character-number">
-                                08
-                            </span>
-
-                            <span class="character-card-name">
-                                Coming Soon
-                            </span>
-
-                            <span class="character-card-type">
-                                Animated Model
-                            </span>
-
-                        </div>
+                        <span id="active-animation-name">
+                            Procedural Effects
+                        </span>
 
                     </div>
 
@@ -579,12 +581,17 @@
                     <div class="graphics-tags tags">
 
                         <span>Three.js</span>
+
                         <span>WebGL</span>
+
                         <span>GLB</span>
-                        <span>Skeletons</span>
-                        <span>Animation</span>
+
+                        <span>AnimationMixer</span>
+
+                        <span>3D Rendering</span>
 
                     </div>
+
 
                 </div>
 
@@ -608,13 +615,17 @@
 
             <div class="container">
 
+
                 <h2 class="section-title">
                     Projects
                 </h2>
 
+
                 <p class="section-subtitle">
+
                     A collection of software, automation tools, and interactive
                     applications I have built.
+
                 </p>
 
 
@@ -644,17 +655,23 @@
                                 DesktopSupportQC
                             </h3>
 
+
                             <p>
+
                                 Automated workstation validation platform built to
                                 streamline enterprise computer deployments.
+
                             </p>
 
 
                             <div class="tags">
 
                                 <span>C#</span>
+
                                 <span>.NET</span>
+
                                 <span>WPF</span>
+
                                 <span>PowerShell</span>
 
                             </div>
@@ -666,14 +683,19 @@
                                     href="https://www.youtube.com/watch?v=pzwMmViu7hs"
                                     target="_blank"
                                     rel="noopener noreferrer">
+
                                     Demo
+
                                 </a>
+
 
                                 <a
                                     href="https://github.com/OsmanSafi"
                                     target="_blank"
                                     rel="noopener noreferrer">
+
                                     GitHub
+
                                 </a>
 
                             </div>
@@ -706,17 +728,23 @@
                                 AI Help Desk Assistant
                             </h3>
 
+
                             <p>
+
                                 Local AI-powered IT assistant built to answer common
                                 support questions and maintain conversational history.
+
                             </p>
 
 
                             <div class="tags">
 
                                 <span>Python</span>
+
                                 <span>FastAPI</span>
+
                                 <span>JavaScript</span>
+
                                 <span>Ollama</span>
 
                             </div>
@@ -728,11 +756,14 @@
                                     Demo Soon
                                 </a>
 
+
                                 <a
                                     href="https://github.com/OsmanSafi"
                                     target="_blank"
                                     rel="noopener noreferrer">
+
                                     GitHub
+
                                 </a>
 
                             </div>
@@ -765,17 +796,23 @@
                                 Solar System
                             </h3>
 
+
                             <p>
+
                                 Interactive 3D solar system visualization built with
                                 Three.js and hosted through GitHub Pages.
+
                             </p>
 
 
                             <div class="tags">
 
                                 <span>Three.js</span>
+
                                 <span>JavaScript</span>
+
                                 <span>HTML</span>
+
                                 <span>CSS</span>
 
                             </div>
@@ -787,14 +824,19 @@
                                     href="https://osmansafi.github.io/solarsystem/"
                                     target="_blank"
                                     rel="noopener noreferrer">
+
                                     Live Demo
+
                                 </a>
+
 
                                 <a
                                     href="https://github.com/OsmanSafi"
                                     target="_blank"
                                     rel="noopener noreferrer">
+
                                     GitHub
+
                                 </a>
 
                             </div>
@@ -810,26 +852,6 @@
                             Coming Soon
                         </div>
 
-                        <div class="project-content">
-
-                            <h3>
-                                Future Project
-                            </h3>
-
-                            <p>
-                                A space reserved for the next application or experiment.
-                            </p>
-
-                        </div>
-
-                    </article>
-
-
-                    <article class="project-card placeholder-card">
-
-                        <div class="placeholder-visual">
-                            Coming Soon
-                        </div>
 
                         <div class="project-content">
 
@@ -852,6 +874,7 @@
                             Coming Soon
                         </div>
 
+
                         <div class="project-content">
 
                             <h3>
@@ -865,6 +888,29 @@
                         </div>
 
                     </article>
+
+
+                    <article class="project-card placeholder-card">
+
+                        <div class="placeholder-visual">
+                            Coming Soon
+                        </div>
+
+
+                        <div class="project-content">
+
+                            <h3>
+                                Future Project
+                            </h3>
+
+                            <p>
+                                A space reserved for the next application or experiment.
+                            </p>
+
+                        </div>
+
+                    </article>
+
 
                 </div>
 
@@ -885,16 +931,20 @@
                     About
                 </p>
 
+
                 <h2>
                     Technical experience shaped by real operational work.
                 </h2>
 
+
                 <p>
+
                     My background combines software development with hands-on
                     experience supporting enterprise systems, devices, users, and
                     large technology projects. I enjoy understanding how something
                     works, identifying where it can be improved, and building a
                     practical solution.
+
                 </p>
 
             </div>
@@ -914,12 +964,14 @@
                     Skills
                 </p>
 
+
                 <h2 class="section-title left-title">
                     Technology and experience
                 </h2>
 
 
                 <div class="skills-grid">
+
 
                     <div>
 
@@ -928,8 +980,10 @@
                         </h3>
 
                         <p>
+
                             Application development, object-oriented programming,
                             APIs, debugging, testing, and software design.
+
                         </p>
 
                     </div>
@@ -942,8 +996,10 @@
                         </h3>
 
                         <p>
+
                             Process automation, scripting, reporting, configuration,
                             validation, and workflow improvement.
+
                         </p>
 
                     </div>
@@ -956,8 +1012,10 @@
                         </h3>
 
                         <p>
+
                             Endpoint management, application deployment, systems
                             administration, cloud platforms, and infrastructure.
+
                         </p>
 
                     </div>
@@ -970,11 +1028,14 @@
                         </h3>
 
                         <p>
+
                             Interactive web development, 3D rendering, animation,
                             lighting, camera systems, and browser-based graphics.
+
                         </p>
 
                     </div>
+
 
                 </div>
 
@@ -995,14 +1056,18 @@
                     Contact
                 </p>
 
+
                 <h2>
                     Let’s connect.
                 </h2>
 
+
                 <p>
+
                     I am interested in software engineering opportunities where I can
                     contribute my technical experience, continue developing my
                     skills, and grow with a company long term.
+
                 </p>
 
 
@@ -1011,15 +1076,20 @@
                     <a
                         href="mailto:osmansabahsafi@gmail.com"
                         class="primary-button">
+
                         Email Me
+
                     </a>
+
 
                     <a
                         href="https://www.linkedin.com/in/osmansafi"
                         target="_blank"
                         rel="noopener noreferrer"
                         class="secondary-button">
+
                         LinkedIn
+
                     </a>
 
                 </div>
@@ -1027,6 +1097,7 @@
             </div>
 
         </section>
+
 
     </main>
 
@@ -1043,17 +1114,20 @@
                 © 2026 Osman Safi
             </p>
 
+
             <div>
 
                 <a
                     href="https://github.com/OsmanSafi"
                     target="_blank"
                     rel="noopener noreferrer">
+
                     GitHub
+
                 </a>
 
-                <a
-                    href="mailto:osmansabahsafi@gmail.com">
+
+                <a href="mailto:osmansabahsafi@gmail.com">
                     Email
                 </a>
 
@@ -1065,16 +1139,23 @@
 
 
     <!-- ==========================================
-         Three.js
+         Three.js Imports
     =========================================== -->
 
     <script type="importmap">
+
     {
         "imports": {
-            "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
-            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+
+            "three":
+                "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+
+            "three/addons/":
+                "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+
         }
     }
+
     </script>
 
 
@@ -1082,6 +1163,7 @@
         type="module"
         src="assets/js/main.js">
     </script>
+
 
 </body>
 
