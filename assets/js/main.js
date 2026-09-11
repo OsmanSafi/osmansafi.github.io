@@ -80,10 +80,6 @@ const reduceMotion =
 const CHARACTER_CONFIG = {
 
 
-    /* ------------------------------------------
-       Iron Man
-    ------------------------------------------ */
-
     ironman: {
 
         name:
@@ -110,10 +106,6 @@ const CHARACTER_CONFIG = {
     },
 
 
-    /* ------------------------------------------
-       Trunks
-    ------------------------------------------ */
-
     trunks: {
 
         name:
@@ -128,17 +120,6 @@ const CHARACTER_CONFIG = {
         actionLabel:
             "Power Up",
 
-        /*
-            Embedded animations found in
-            the uploaded Trunks GLB:
-
-            Golpe
-            Parado
-            Patada
-            Volando
-            Poder
-        */
-
         idleAnimation:
             "Parado",
 
@@ -150,10 +131,6 @@ const CHARACTER_CONFIG = {
 
     },
 
-
-    /* ------------------------------------------
-       Venom
-    ------------------------------------------ */
 
     venom: {
 
@@ -169,14 +146,6 @@ const CHARACTER_CONFIG = {
         actionLabel:
             "Smash",
 
-        /*
-            Venom contains 190 embedded
-            animation clips.
-
-            We use Idle_C for the default
-            state and Smashing for interaction.
-        */
-
         idleAnimation:
             "Idle_C",
 
@@ -189,10 +158,6 @@ const CHARACTER_CONFIG = {
     },
 
 
-    /* ------------------------------------------
-       Spartan
-    ------------------------------------------ */
-
     spartan: {
 
         name:
@@ -202,7 +167,7 @@ const CHARACTER_CONFIG = {
             "./models/spartan.glb",
 
         description:
-            "Rigged Halo Spartan model using an embedded animation clip, skeletal animation playback, real-time lighting, and camera controls.",
+            "Rigged Spartan model demonstrating embedded skeletal animation playback, real-time lighting, model integration, and camera controls.",
 
         actionLabel:
             "Replay Animation",
@@ -324,9 +289,7 @@ const hemisphereLight =
 
 
 scene.add(
-
     hemisphereLight
-
 );
 
 
@@ -356,9 +319,7 @@ mainLight.castShadow =
 
 
 scene.add(
-
     mainLight
-
 );
 
 
@@ -386,9 +347,7 @@ blueLight.position.set(
 
 
 scene.add(
-
     blueLight
-
 );
 
 
@@ -416,9 +375,7 @@ goldLight.position.set(
 
 
 scene.add(
-
     goldLight
-
 );
 
 
@@ -444,9 +401,7 @@ rimLight.position.set(
 
 
 scene.add(
-
     rimLight
-
 );
 
 
@@ -474,9 +429,7 @@ effectLight.position.set(
 
 
 scene.add(
-
     effectLight
-
 );
 
 
@@ -581,12 +534,6 @@ let ironManBaseRotation =
 const IRON_MAN_EFFECT_DURATION =
     1.1;
 
-
-/*
-    Loaded models are cached so switching
-    back to a character does not download
-    the GLB again.
-*/
 
 const loadedCharacters =
     new Map();
@@ -703,7 +650,7 @@ function showMessage(
 
 
 /* ==========================================
-   Reset Model Transform
+   Reset Model
 ========================================== */
 
 function resetModelTransform(
@@ -795,11 +742,6 @@ function frameIronMan(
     );
 
 
-    /*
-        Preserve the Iron Man framing
-        that already worked well.
-    */
-
     model.position.set(
 
         0,
@@ -861,10 +803,6 @@ function frameFullBody(
     );
 
 
-    /*
-        Determine original dimensions.
-    */
-
     let box =
         new THREE.Box3()
             .setFromObject(
@@ -877,11 +815,6 @@ function frameFullBody(
             new THREE.Vector3()
         );
 
-
-    /*
-        Normalize every character to a
-        predictable visible height.
-    */
 
     const targetHeight =
         3.6;
@@ -908,10 +841,6 @@ function frameFullBody(
     );
 
 
-    /*
-        Calculate the scaled bounds.
-    */
-
     box =
         new THREE.Box3()
             .setFromObject(
@@ -924,14 +853,6 @@ function frameFullBody(
             new THREE.Vector3()
         );
 
-
-    /*
-        Translate the actual visible geometry
-        to world origin.
-
-        This avoids relying on inconsistent
-        Sketchfab model origins.
-    */
 
     model.position.x -=
         center.x;
@@ -949,10 +870,6 @@ function frameFullBody(
         true
     );
 
-
-    /*
-        Full-body camera.
-    */
 
     camera.position.set(
 
@@ -1083,10 +1000,6 @@ function findAnimation(
     }
 
 
-    /*
-        First try exact match.
-    */
-
     let clip =
         THREE.AnimationClip
             .findByName(
@@ -1104,10 +1017,6 @@ function findAnimation(
 
     }
 
-
-    /*
-        Then try case-insensitive match.
-    */
 
     const desired =
         desiredName
@@ -1134,7 +1043,7 @@ function findAnimation(
 
 
 /* ==========================================
-   Stop Current Animation
+   Stop Animations
 ========================================== */
 
 function stopAnimations() {
@@ -1180,7 +1089,7 @@ function playIdleAnimation() {
 
     const config =
         CHARACTER_CONFIG[
-            activeCharacterKey
+        activeCharacterKey
         ];
 
 
@@ -1260,7 +1169,7 @@ function playIdleAnimation() {
 
 
 /* ==========================================
-   Play Action Animation
+   Play Character Action
 ========================================== */
 
 function playCharacterAction() {
@@ -1271,11 +1180,6 @@ function playCharacterAction() {
 
     }
 
-
-    /*
-        Iron Man uses procedural effects
-        because the model has no clips.
-    */
 
     if (
         activeCharacterKey ===
@@ -1306,7 +1210,7 @@ function playCharacterAction() {
 
     const config =
         CHARACTER_CONFIG[
-            activeCharacterKey
+        activeCharacterKey
         ];
 
 
@@ -1348,10 +1252,6 @@ function playCharacterAction() {
     }
 
 
-    /*
-        Fade out current animation.
-    */
-
     if (activeAction) {
 
         activeAction.fadeOut(
@@ -1369,11 +1269,6 @@ function playCharacterAction() {
 
     action.reset();
 
-
-    /*
-        Spartan only has one animation.
-        Let it play normally and repeat.
-    */
 
     if (
         activeCharacterKey ===
@@ -1429,11 +1324,6 @@ function playCharacterAction() {
 
     );
 
-
-    /*
-        Return to idle when a one-time
-        action finishes.
-    */
 
     if (
         activeCharacterKey !==
@@ -1491,7 +1381,7 @@ function activateCharacter(
 
     const config =
         CHARACTER_CONFIG[
-            key
+        key
         ];
 
 
@@ -1504,10 +1394,6 @@ function activateCharacter(
 
     }
 
-
-    /*
-        Remove previous model.
-    */
 
     if (activeModel) {
 
@@ -1542,10 +1428,6 @@ function activateCharacter(
     );
 
 
-    /*
-        Frame the character.
-    */
-
     if (
         config.framing ===
         "ironman"
@@ -1571,11 +1453,6 @@ function activateCharacter(
     );
 
 
-    /*
-        Store Iron Man starting position
-        for the procedural effect.
-    */
-
     if (
         key ===
         "ironman"
@@ -1598,10 +1475,6 @@ function activateCharacter(
     }
 
 
-    /*
-        AnimationMixer for animated models.
-    */
-
     if (
         data.animations.length > 0
     ) {
@@ -1620,10 +1493,6 @@ function activateCharacter(
 
     }
 
-
-    /*
-        Update UI.
-    */
 
     characterName.textContent =
         config.name;
@@ -1646,7 +1515,7 @@ function activateCharacter(
                 "active",
 
                 card.dataset.character ===
-                    key
+                key
 
             );
 
@@ -1658,10 +1527,6 @@ function activateCharacter(
     controls.autoRotate =
         !reduceMotion;
 
-
-    /*
-        Play idle animation.
-    */
 
     if (
         config.idleAnimation &&
@@ -1704,7 +1569,7 @@ function loadCharacter(
 
     const config =
         CHARACTER_CONFIG[
-            key
+        key
         ];
 
 
@@ -1714,10 +1579,6 @@ function loadCharacter(
 
     }
 
-
-    /*
-        Already downloaded.
-    */
 
     if (
         loadedCharacters.has(
@@ -1749,11 +1610,6 @@ function loadCharacter(
 
     );
 
-
-    /*
-        Venom is a large model,
-        so it may take noticeably longer.
-    */
 
     if (
         key ===
@@ -1828,11 +1684,6 @@ function loadCharacter(
 
 
         progress => {
-
-            /*
-                Display loading percentage when
-                the server reports total size.
-            */
 
             if (
                 progress.total >
@@ -1967,10 +1818,6 @@ function animateIronMan(
     }
 
 
-    /*
-        Normal floating.
-    */
-
     if (
         !ironManEffectActive &&
         !reduceMotion
@@ -1988,10 +1835,6 @@ function animateIronMan(
 
     }
 
-
-    /*
-        Normal emissive pulse.
-    */
 
     const normalGlow =
         1.3 +
@@ -2242,11 +2085,6 @@ function animate() {
         clock.elapsedTime;
 
 
-    /*
-        Update currently active embedded
-        animation.
-    */
-
     if (
         activeMixer &&
         !reduceMotion
@@ -2258,11 +2096,6 @@ function animate() {
 
     }
 
-
-    /*
-        Iron Man is procedural because
-        his model has no animations.
-    */
 
     animateIronMan(
         elapsed
